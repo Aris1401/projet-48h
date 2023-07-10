@@ -1,1 +1,6 @@
-
+.main-header {
+    background: url("../img/dejeuner-sante-emporter-dans-boite-lunch.jpg");
+    
+    width: 100vw;
+    height: 200px;
+}
