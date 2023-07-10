@@ -91,8 +91,7 @@
                 return $sommeCode-$depenseRegime;   
             }
             else{
-                throw new Exception("Montant négatif");
-                
+                throw new Exception("Montant négatif");                
             }
         }
     }

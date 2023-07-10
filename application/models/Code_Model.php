@@ -109,7 +109,7 @@ require_once('ValidationCode_Model.php');
 
         public function getCodeValideByUtilisateur($idUtilisateur){
             $validationCodeModel = new ValidationCode_Model();
-            $data = $validationCodeModel->getByidUtilisateur($idUtilisateur);
+            $data = $validationCodeModel->getByidUtilisateurValider($idUtilisateur);
             $codes = array();
             if (!empty($data)) {
                 foreach ($data as $row) {

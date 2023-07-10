@@ -100,7 +100,7 @@ create table ValidationCode(
     idValidationCode INTEGER PRIMARY KEY AUTO_INCREMENT,
     idCode integer not null,
     idUtilisateur integer not null,
-    dateValidation date not null,
+    dateValidation date,
     Foreign Key (idCode) REFERENCES Code(idCode),
     Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur)
 );
