@@ -50,7 +50,7 @@ require_once('ValidationCode_Model.php');
         {
             $table_name = 'Code';
 
-            $query = "SELECT * FROM ".$table_name."WHERE idCode =  %ds";
+            $query = "SELECT * FROM ".$table_name."WHERE idCode =  %i";
             $query = sprintf($query, $this->db->escape($idCode));
 
             $resultat = $this->db->query($query);
@@ -67,6 +67,43 @@ require_once('ValidationCode_Model.php');
             }
             else{
                 throw new Exception("Code inexistant");
+            }
+        }
+
+        public function getByCode($code){
+            $table_name = 'Code';
+        
+            $query = "SELECT * FROM ".$table_name."WHERE code =  %i";
+            $query = sprintf($query, $this->db->escape($code));
+        
+            $resultat = $this->db->query($query);
+            $results = $resultat->row_array();
+        
+            if($results != null){
+                $code = new Code_Model();
+                $code->setIdCode($results['idCode']);
+                $code->setCode($code);
+                $code->setValeurCode($results['valeurCode']);
+                $code->setEtat($results['etat']);
+        
+                return $code;
+            }
+            else{
+                throw new Exception("Code inexistant");
+            }
+        }
+        
+        public function checkIfValide($code){
+            $codeModel = $this->getByCode($code);
+            if($codeModel->getEtat() == 0){
+                $validationCodeModel = new ValidationCode_Model();
+                if($validationCodeModel->checkIfValider($codeModel->getIdCode())){
+                    return false;
+                }
+                return true;
+            }
+            else{
+                return false;
             }
         }
 

@@ -65,6 +65,22 @@ class ValidationCode_Model extends CI_Model
         }
         return $results;
     }
+
+    public function checkIfValider($idCode){
+        $table_name = 'ValidationCode';
+
+        $query = "SELECT * FROM ".$table_name." WHERE idCode = %i";
+        $query = sprintf($query, $this->db->escape($idCode));
+
+        $resultat = $this->db->query($query);
+        $numRows = $resultat->num_rows();
+
+        if($numRows > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

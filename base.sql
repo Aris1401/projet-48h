@@ -31,7 +31,8 @@ create table ProfilUtilisateur(
     poids decimal not null,
     taille decimal not null,
     dateDeNaissance DATE not null,
-    idGenre integer,
+    idGenre integer not null,
+    poidObjectif integer not null,
     Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur),
     Foreign Key (idGenre) REFERENCES Genre(idGenre)
 );
@@ -90,7 +91,7 @@ create table ProgrammeRegime(
 
 create table Code(
     idCode INTEGER PRIMARY KEY AUTO_INCREMENT,
-    code varchar(5) not null,
+    code varchar(5) UNIQUE not null,
     valeurCode decimal not null,
     etat integer not null
 );
