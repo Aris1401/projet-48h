@@ -67,6 +67,8 @@ class ProfilUtilisateur_Model extends CI_Model
     {
         return $this->idGenre;
     }
+
+   
 }
 
 ?>
