@@ -18,7 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="left">
                 <h1>Choisissez votre objectif</h1>
                 
-                <form>
+                <form method="POST" action="<?php echo base_url("LoginRegister/validerSuiteInscription"); ?>">
                     <div class="field objectifs">
                         <input type="radio" id="1" value="1" name="objectif">
                         <label class="radio" for="1">

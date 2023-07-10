@@ -124,18 +124,27 @@ public function doRegister($user) {
         return $utilisateur;
     }
 //////////////////////////////////////////////MODIFIER UTILISATEUR//////////////////////////////////////////////////////////////////////////
-public function doUpdate($idUtilisateur, $nom, $prenom, $motDePasse, $idTypeObjectif, $estAdmin)
+public function doUpdate($idUtilisateur, $nom, $prenom, $email ,$motDePasse, $idTypeObjectif, $estAdmin)
 {
     $query = "UPDATE Utilisateur SET nom = %s, prenom = %s, motDePasse = %s, idTypeObjectif = %s, estAdmin = %s WHERE idUtilisateur = %s";
-    $query = sprintf($query, $this->db->escape($nom), $this->db->escape($prenom), $this->db->escape($motDePasse),
-        $this->db->escape($idTypeObjectif), $this->db->escape($estAdmin), $this->db->escape($idUtilisateur));
+    $query = sprintf($query, $this->db->escape($nom), $this->db->escape($prenom),$this->db->escape($email),
+     $this->db->escape($motDePasse),$this->db->escape($idTypeObjectif), $this->db->escape($estAdmin), $this->db->escape($idUtilisateur));
 
     $this->db->query($query);
 
     return $this->db->affected_rows();
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public function doUpdateObjectif($idUtilisateur,$idTypeObjectif)
+{
+    $query = "UPDATE Utilisateur SET  idTypeObjectif = %s  WHERE idUtilisateur = %s";
+    $query = sprintf($query,$this->db->escape($idTypeObjectif),$this->db->escape($idUtilisateur));
+
+    $this->db->query($query);
+
+    return $this->db->affected_rows();
+}
 }
 
 ?>
