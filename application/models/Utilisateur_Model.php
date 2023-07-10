@@ -1,5 +1,6 @@
 <?php
     require_once('Code_Model.php');
+    require_once('Transaction_Model.php');
     require_once('HistoriqueAchatRegime_Model.php');
     class Utilisateur_Model extends CI_Model
     {
@@ -104,6 +105,18 @@
             else{
                 throw new Exception("Montant négatif");                
             }
+        }
+
+        public function getMonnaieCouranteWithTransaction($idUtilisateur){
+            $transaction = new Transaction_Model();
+            $transactions = $transaction->getTransactionByIdUtilisateur($idUtilisateur);
+            $entre = 0;
+            $sortie = 0;
+            foreach ($transactions as $transact) {
+                $sortie += $transact['sortie'];
+                $entre += $transact['entre'];
+            }
+            return $entre-$sortie;
         }
 
         public function ajoutGainOuPerte($poid){

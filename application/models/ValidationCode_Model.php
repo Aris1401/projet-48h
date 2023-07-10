@@ -1,5 +1,6 @@
 <?php
 require_once('Code_Model.php');
+require_once('Transaction_Model.php');
 
 class ValidationCode_Model extends CI_Model
 {
@@ -132,6 +133,8 @@ class ValidationCode_Model extends CI_Model
             $code = new Code_Model();
             $code = $code->getById($idCode);
             $code->updateCode($idCode,$code->getCode(),$code->getValeurCode(),10);
+            $transaction = new Transaction_Model();
+            $transaction->ajouter(0,$code->getValeurCode(),$existingValidationCode->getIdUtilisateur());
             
             return true;
         }
