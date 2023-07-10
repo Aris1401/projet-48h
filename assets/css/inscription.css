@@ -58,7 +58,7 @@ body {
 .container > .left > form {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
 }
 
 .container .control > input {
@@ -67,5 +67,33 @@ body {
     border: 2px solid #ffffff59;
     background-color: transparent;
     color: white;
+    
+    width: 100%;
+}
+
+.container > .left > form > .buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container > .left > form > .buttons > div {
+    width: 100%;
+}
+
+.container > .left > form > .buttons > div:nth-child(1) > input {
+  width: 100%;
+  background-color: var(--light-violet);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.container > .left > form > .buttons > div:nth-child(1) > input:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 

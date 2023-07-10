@@ -1,0 +1,66 @@
+:root {
+  --black-olive: #3b413cff;
+  --cerise: #cf4d6fff;
+  --shamrock-green: #4da167ff;
+  --dark-pastel-green: #3bc14aff;
+  --baby-powder: #fbfef9ff;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../font/Montserrat-Regular.ttf");
+}
+
+body {
+  font-family: "Montserrat";
+  overflow: hidden;
+  
+  background: url("../img/dejeuner-sante-emporter-dans-boite-lunch.jpg");
+  background-size: 100%;
+  
+  width: 100vw;
+  height: 100vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  
+  background-color: var(--shamrock-green);
+  padding: 1rem;
+  
+  color: white;
+}
+
+.container > form {
+    width: 60%;
+}
+
+.container > h1 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+}
+
+.container input {
+    padding: 0.75rem 1.25rem;
+    outline: none;
+    border: 2px solid #ffffff59;
+    background-color: transparent;
+    color: white;
+}
