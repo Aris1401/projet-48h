@@ -1,4 +1,7 @@
 <?php
+require_once('Code_Model.php');
+require_once('Transaction_Model.php');
+
 class ValidationCode_Model extends CI_Model
 {
     private $idValidationCode;
@@ -46,6 +49,29 @@ class ValidationCode_Model extends CI_Model
         return $this->dateValidation;
     }
 
+    public function getById($idCode)
+    {
+        $table_name = 'ValidationCode';
+
+        $query = "SELECT * FROM ".$table_name."WHERE idCode =  %i";
+        $query = sprintf($query, $this->db->escape($idCode));
+
+        $resultat = $this->db->query($query);
+        $results = $resultat->row_array();
+
+        if($results != null){
+            $code = new ValidationCode_Model();
+            $code->setIdCode($idCode);
+            $code->setIdUtilisateur($results['idUtilisateur']);
+            $code->setDateValidation($results['dateValidation']);
+
+            return $code;
+        }
+        else{
+            throw new Exception("Code inexistant");
+        }
+    }
+
     public function save(){
         $data = array(
             'idCode' => $this->idCode,
@@ -91,6 +117,40 @@ class ValidationCode_Model extends CI_Model
             return false;
         }
     }
-}
 
+    public function validerCode($idCode)
+    {
+        $existingValidationCode = $this->getById($idCode);
+        
+        if ($existingValidationCode) {
+            $dateValidation = date('Y-m-d');
+            $data = array(
+                'dateValidation' => $dateValidation
+            );
+            $this->db->where('idCode', $idCode);
+            $this->db->update('ValidationCode', $data);
+
+            $code = new Code_Model();
+            $code = $code->getById($idCode);
+            $code->updateCode($idCode,$code->getCode(),$code->getValeurCode(),10);
+            $transaction = new Transaction_Model();
+            $transaction->ajouter(0,$code->getValeurCode(),$existingValidationCode->getIdUtilisateur());
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+
+    public function refuserCode($idCode){
+        $existingValidationCode = $this->getById($idCode);    
+        if ($existingValidationCode) {
+            $this->db->where('idCode', $idCode);
+            $this->db->delete('ValidationCode');                
+            return true;
+        }            
+        return false;
+    }
+}
 ?>
