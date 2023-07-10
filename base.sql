@@ -98,10 +98,10 @@ create table Code(
 create table ValidationCode(
     idvalidationCode INTEGER PRIMARY KEY AUTO_INCREMENT,
     idCode integer not null,
-    idPersonne integer not null,
+    idUtilisateur integer not null,
     dateValidation date not null,
     Foreign Key (idCode) REFERENCES Code(idCode),
-    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idutilisateur)
+    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur)
 );
 
 create table Transaction(
@@ -110,7 +110,7 @@ create table Transaction(
     sortie decimal not null,
     entre decimal not null,
     idUtilisateur integer not null,
-    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idutilisateur)
+    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur)
 );
 
 create table HistoriqueAchatRegime(
@@ -119,6 +119,6 @@ create table HistoriqueAchatRegime(
     idRegime integer not null,
     montant decimal not null,
     dateAchat date not null,
-    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idutilisateur),
+    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur),
     Foreign Key (idRegime) REFERENCES Regime(idRegime)
 );
