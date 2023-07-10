@@ -32,7 +32,6 @@ create table ProfilUtilisateur(
     taille decimal not null,
     dateDeNaissance DATE not null,
     idGenre integer not null,
-    poidObjectif integer not null,
     Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur),
     Foreign Key (idGenre) REFERENCES Genre(idGenre)
 );

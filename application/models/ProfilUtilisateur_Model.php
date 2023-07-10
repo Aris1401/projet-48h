@@ -68,15 +68,6 @@ class ProfilUtilisateur_Model extends CI_Model
     {
         return $this->idGenre;
     }
-
-    public function setPoidObjectif($poidObjectif)
-    {
-        $this->poidObjectif = $poidObjectif;
-    }
-
-    public function getPoidObjectif(){
-        return $this->poidObjectif;
-    }
 }
 
 ?>
