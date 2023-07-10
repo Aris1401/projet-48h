@@ -29,10 +29,12 @@
                 
                 <div class="field">
                     <label for="">Date Naissance</p>
-                    <input type="date" name="datenaissance" placeholder="Date Naissance"/>
+                    <div class="control">
+                        <input type="date" name="datenaissance" placeholder="Date Naissance"/>
+                    </div>
                 </div>
                 
-                <div class="field objectifs">
+                <div class="field genres">
                     <input type="radio" id="1" value="1" name="objectif">
                     <label class="radio" for="1">
                         Homme
