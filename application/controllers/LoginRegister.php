@@ -72,4 +72,12 @@ class LoginRegister extends CI_Controller{
             }
         }           
 
+    
+    public function suiteInscription() {
+        $this->load->view("frontoffice/login/SuiteInscription");
+    }
+    
+    public function profilUser(){
+        $this->load->view("frontoffice/login/ProfilUtilisateur");
+    }
 }

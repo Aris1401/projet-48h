@@ -20,48 +20,44 @@
 }
 
 body {
-  background-color: var(--shamrock-green);
   font-family: "Montserrat";
   overflow: hidden;
+  
+  background: url("../img/dejeuner-sante-emporter-dans-boite-lunch.jpg");
+  background-size: 100%;
+  
+  width: 100vw;
+  height: 100vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .container {
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  flex-direction: row-reverse;
-}
-
-.container > .left {
-  width: 50%;
-  display: flex;
   flex-direction: column;
-  color: white;
+  width: 100vw;
   align-items: center;
+  
+  background-color: var(--shamrock-green);
+  padding: 1rem;
+  
+  color: white;
 }
 
-.container > .right {
-    width: 50%;
+.container > form {
+    width: 60%;
 }
 
-.container > .right > img {
-    transform: scaleX(-1);
-}
-
-.container > .left > h1 {
+.container > h1 {
   font-size: 35px;
   font-weight: bold;
   margin-bottom: 2.5rem;
 }
 
-.container > .left > form {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
-
-.container .control > input {
+.container input {
     padding: 0.75rem 1.25rem;
     outline: none;
     border: 2px solid #ffffff59;
@@ -71,17 +67,17 @@ body {
     width: 100%;
 }
 
-.container > .left > form > .buttons {
+.container > form > .buttons {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.container > .left > form > .buttons > div {
+.container > form > .buttons > div {
     width: 100%;
 }
 
-.container > .left > form > .buttons > div:nth-child(1) > input {
+.container > form > .buttons > div:nth-child(1) > input {
   width: 100%;
   background-color: var(--light-violet);
   color: white;
@@ -93,7 +89,31 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.container > .left > form > .buttons > div:nth-child(1) > input:hover {
+.container > form > .buttons > div:nth-child(1) > input:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
+.field.genres {
+    display: flex;
+}
+
+.field.genres label {
+    padding: 0.75rem 1.25rem;
+    outline: none;
+    border: 2px solid #ffffff59;
+    background-color: transparent;
+    color: white;
+    
+    width: 100%;
+    
+    margin: 0;
+}
+
+.field.genres > input {
+    appearance: none;
+    border: none;
+}
+
+.field.genres input:checked + label {
+    background-color: rgba(255, 255, 255, 0.4);
+}

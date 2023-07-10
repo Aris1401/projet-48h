@@ -25,6 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <input type="text" placeholder="Nom" name="nom" value="mirija@gmail.com">
                             </div>
                         </div>
+                        
                         <div class="field">
                             <label for="">Prenom</label>
                             <div class="control">
@@ -48,7 +49,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="buttons">
                         <div>
-                            <input type="submit" value="Se connecter">
+                            <input type="submit" value="S'Inscrire">
                         </div>
                     </div>
                 </form>
