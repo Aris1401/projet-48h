@@ -7,6 +7,7 @@ class ProfilUtilisateur_Model extends CI_Model
     private $taille;
     private $dateDeNaissance;
     private $idGenre;
+    private $poidObjectif;
     
     public function setIdProfilUtilisateur($idProfilUtilisateur)
     {
@@ -66,6 +67,15 @@ class ProfilUtilisateur_Model extends CI_Model
     public function getIdGenre()
     {
         return $this->idGenre;
+    }
+
+    public function setPoidObjectif($poidObjectif)
+    {
+        $this->poidObjectif = $poidObjectif;
+    }
+
+    public function getPoidObjectif(){
+        return $this->poidObjectif;
     }
 }
 
