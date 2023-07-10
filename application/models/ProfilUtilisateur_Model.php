@@ -91,7 +91,28 @@ public function doUpdate($idUtilisateur, $poids, $taille, $dateDeNaissance, $idG
     return $this->db->affected_rows();
 }
 /////////////////////////////////////////////////////////////////////
-public function getProfilUtilisateurById($id) {
+public function getProfilUtilisateurById($idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre) {
+    $users_Table = "Utilisateur";
+
+    $query = "SELECT * FROM ".$users_Table." WHERE ProfilUtilisateur = %d";
+    $query = sprintf($query, $this->db->escape($id));
+
+    $resultat = $this->db->query($query);
+    $ligne_resultat = $resultat->row_array();
+
+    if ($ligne_resultat == null)
+    {
+      $this-> doRegister($idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre);
+    }
+    else
+    {
+        $this-> doUpdate($idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre);
+    }
+
+
+}
+//////////////////////////////////////////////////////////////////
+public function getProfilUtilisateurByIdd($id) {
     $users_Table = "Utilisateur";
 
     $query = "SELECT * FROM ".$users_Table." WHERE ProfilUtilisateur = %d";
@@ -112,7 +133,6 @@ public function getProfilUtilisateurById($id) {
     return $utilisateur;
 
 }
-
 }
 
 ?>
