@@ -144,5 +144,46 @@ require_once('ValidationCode_Model.php');
             }
             return $somme;
         }
+
+        public function ajoutCode($code,$valeur){
+            $data = array(
+                'code' => $code,
+                'valeurCode' => $valeur,
+                'etat' => 0
+            );
+        
+            $this->db->insert('Code', $data);
+        }
+
+        public function updateCode($idCode,$code,$valeur){
+            $existingCode = $this->getById($idCode);
+    
+            if ($existingCode) {
+                $data = array(
+                    'code' => $code,
+                    'valeurCode' => $valeur
+                );
+        
+                $this->db->where('idCode', $idCode);
+                $this->db->update('Code', $data);
+                
+                return true;
+            }
+            
+            return false;
+        }
+
+        public function deleteCode($idCode){
+            $existingCode = $this->getById($idCode);
+    
+            if ($existingCode) {
+                $this->db->where('idCode', $idCode);
+                $this->db->delete('Code');
+                
+                return true;
+            }
+            
+            return false;
+        }
     } 
 ?>
