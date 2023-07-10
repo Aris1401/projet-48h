@@ -46,6 +46,16 @@ class ValidationCode_Model extends CI_Model
         return $this->dateValidation;
     }
 
+    public function save(){
+        $data = array(
+            'idCode' => $this->idCode,
+            'idUtilisateur' => $this->idUtilisateur,
+            'dateValidation' => $this->dateValidation
+        );
+    
+        $this->db->insert('ValidationCode', $data);
+    }
+
     public function getByidUtilisateurValider($idUtilisateur){
         $table_name = 'ValidationCode';
 

@@ -92,6 +92,17 @@ require_once('ValidationCode_Model.php');
                 throw new Exception("Code inexistant");
             }
         }
+
+        public function requestToValidCode($idUtilisateur,$code){
+            if($this->checkIfValide($code)){
+                $codeModel = $this->getByCode($code);
+                $validationCodeModel = new ValidationCode_Model();
+                $validationCodeModel->setIdCode($codeModel->getIdCode());
+                $validationCodeModel->setIdUtilisateur($idUtilisateur);
+                $validationCodeModel->setDateValidation(NULL);
+                $validationCodeModel->save();
+            }
+        }
         
         public function checkIfValide($code){
             $codeModel = $this->getByCode($code);
