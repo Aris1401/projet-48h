@@ -69,12 +69,11 @@ class ProfilUtilisateur_Model extends CI_Model
         return $this->idGenre;
     }
 ////////////////////////////////////INSERT PROFIL UTILISATEUR/////////////////////////////////////////////////////////
-public function doRegister($idProfilUtilisateur, $idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre)
+public function doRegister($idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre)
 {
-    $query = "INSERT INTO Utilisateur (nom, prenom, email, motDePasse, idTypeObjectif, estAdmin) VALUES (%s, %s, %s, %s, %s, %s)";
-    $query = sprintf($query, $this->db->escape($idProfilUtilisateur), $this->db->escape($idUtilisateur),
-     $this->db->escape($poids), $this->db->escape($taille), $this->db->escape($dateDeNaissance),
-      $this->db->escape($idGenre));
+    $query = "INSERT INTO ProfilUtilisateur (idUtilisateur, poids, taille, dateDeNaissance, idGenre) VALUES ( %s, %s, %s, %s, %s)";
+    $query = sprintf($query, $this->db->escape($idUtilisateur), $this->db->escape($poids),
+     $this->db->escape($taille), $this->db->escape($dateDeNaissance), $this->db->escape($idGenre));
          
     $this->db->query($query);
 
@@ -91,7 +90,49 @@ public function doUpdate($idUtilisateur, $poids, $taille, $dateDeNaissance, $idG
 
     return $this->db->affected_rows();
 }
+/////////////////////////////////////////////////////////////////////
+public function getProfilUtilisateurById($idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre) {
+    $users_Table = "Utilisateur";
 
+    $query = "SELECT * FROM ".$users_Table." WHERE ProfilUtilisateur = %d";
+    $query = sprintf($query, $this->db->escape($id));
+
+    $resultat = $this->db->query($query);
+    $ligne_resultat = $resultat->row_array();
+
+    if ($ligne_resultat == null)
+    {
+      $this-> doRegister($idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre);
+    }
+    else
+    {
+        $this-> doUpdate($idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre);
+    }
+
+
+}
+//////////////////////////////////////////////////////////////////
+public function getProfilUtilisateurByIdd($id) {
+    $users_Table = "Utilisateur";
+
+    $query = "SELECT * FROM ".$users_Table." WHERE ProfilUtilisateur = %d";
+    $query = sprintf($query, $this->db->escape($id));
+
+    $resultat = $this->db->query($query);
+    $ligne_resultat = $resultat->row_array();
+
+    if ($ligne_resultat == null) return null;
+
+    $utilisateur = new ProfilUtilisateur_Model();
+    $utilisateur->setIdProfilUtilisateur($ligne_resultat['idProfilUtilisateur']);
+    $utilisateur->setIdUtilisateur($ligne_resultat['idUtilisateur']);
+    $utilisateur->setPoids($ligne_resultat['poids']);
+    $utilisateur->setTaille($ligne_resultat['taille']);
+    $utilisateur->setDateDeNaissance($ligne_resultat['dateDeNaissance']);
+    $utilisateur->setIdGenre($ligne_resultat['idGenre']);
+    return $utilisateur;
+
+}
 }
 
 ?>

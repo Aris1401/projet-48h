@@ -14,11 +14,13 @@ class LoginRegister extends CI_Controller{
     public function login() {
         $this->load->view("frontoffice/login/Login");
     }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+/////////////////////////////////////////////////
+   
     public function inscription() {
         $this->load->view("frontoffice/login/Inscription");
     }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////
+
     public function validerInscription()  {
         $this->load->helper('UI');
         $this->load->helper('url');
@@ -44,14 +46,15 @@ class LoginRegister extends CI_Controller{
 
             $_SESSION['current_user'] = $this->user->getUtilisateurById($this->user->doRegister($user));
 
-            // redirect('frontoffice/acceuil');
+            redirect('LoginRegister/suiteInscription');
         } 
         else
          {
             redirect('loginRegister?error=1');
           }
         }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////         
+//////////////////////////////////////////////////////
+         
         function validerLogin() {
             session_start();
 
@@ -64,20 +67,69 @@ class LoginRegister extends CI_Controller{
             
             if ($ligne_resultat == null) {
                 echo "False|";
-            } else {
+            } 
+            else
+             {
                 if (!isset($_SESSION['current_user'])) {
                     $_SESSION['current_user'] = $this->user->getUtilisateurById($ligne_resultat['idUtilisateur']);
                 }
                 echo "True|";
             }
         }           
-
-    
+///////////////////////////////////////////////////
+   
     public function suiteInscription() {
         $this->load->view("frontoffice/login/SuiteInscription");
     }
+
+ //////////////////////////////////////////////////
+
+    public function validerSuiteInscription()  {
+        $this->load->helper('UI');
+        $this->load->helper('url');
+        $this->load->model('Utilisateur_Model', 'user');
+        session_start();
+        $idTypeObjectif = $this->input->post('objectif');
+        $current_user = $_SESSION['current_user'];
+        if (check_inputs(array($idTypeObjectif)))
+         {
+                $this->user->getUtilisateurById($this->user->doUpdateObjectif($current_user->getIdUtilisateur(),$idTypeObjectif));
+                redirect('LoginRegister/profilUtilisateur');
+        } 
+        else
+        {
+            redirect('loginRegister?error=1');
+        }
+        }
+///////////////////////////////////////////////////
+   
+public function profilUtilisateur() {
+    $this->load->view("frontoffice/login/ProfilUtilisateur");
+}
+
+//////////////////////////////////////////////////
+
+public function validerProfilUtilisateur()  {
+    $this->load->helper('UI');
+    $this->load->helper('url');
+    $this->load->model('Utilisateur_Model', 'user');
+    $this->load->model('ProfilUtilisateur_Model', 'profilUtilisateur');
+    session_start();
+    $Poids = $this->input->post('Poids');
+    $Taille = $this->input->post('Taille');
+    $DateDeNaissance = $this->input->post('DateDeNaissance');
+    $Genre = $this->input->post('Genre');
+    $current_user = $_SESSION['current_user'];
     
-    public function profilUser(){
-        $this->load->view("frontoffice/login/ProfilUtilisateur");
+    if (check_inputs(array($Poids,$Taille,$DateDeNaissance,$Genre)))
+     {
+            $this->profilUtilisateur->doRegister($current_user->getIdUtilisateur(),$Poids,$Taille,$DateDeNaissance,$Genre);
+            redirect('LoginRegister/profilUtilisateur');
+    } 
+    else
+    {
+        redirect('loginRegister?error=1');
     }
+    }  
+
 }

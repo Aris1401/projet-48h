@@ -67,6 +67,22 @@ class Plat_Model extends CI_Model
     {
         return $this->image;
     }
+////////////////Select All
+    public function getAllPlat() {
+        $query = "SELECT * FROM Plat";
+    
+        $resultat = $this->db->query($query);
+    
+        $currentObjects = array();
+    
+        foreach($resultat->result_array() as $data) {
+            array_push($currentObjects, $data);
+        }
+    
+        return $currentObjects;
+    }
+
+
 }
 
 ?>
