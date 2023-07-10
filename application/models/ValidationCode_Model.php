@@ -1,4 +1,6 @@
 <?php
+require_once('Code_Model.php');
+
 class ValidationCode_Model extends CI_Model
 {
     private $idValidationCode;
@@ -126,6 +128,10 @@ class ValidationCode_Model extends CI_Model
         );
         $this->db->where('idCode', $idCode);
         $this->db->update('ValidationCode', $data);
+
+        $code = new Code_Model();
+        $code = $code->getById($idCode);
+        $code->updateCode($idCode,$code->getCode(),$code->getValeurCode(),10);
         
         return true;
     }

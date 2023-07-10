@@ -155,13 +155,14 @@ require_once('ValidationCode_Model.php');
             $this->db->insert('Code', $data);
         }
 
-        public function updateCode($idCode,$code,$valeur){
+        public function updateCode($idCode,$code,$valeur,$etat){
             $existingCode = $this->getById($idCode);
     
             if ($existingCode) {
                 $data = array(
                     'code' => $code,
-                    'valeurCode' => $valeur
+                    'valeurCode' => $valeur,
+                    'etat' => $etat
                 );
         
                 $this->db->where('idCode', $idCode);
