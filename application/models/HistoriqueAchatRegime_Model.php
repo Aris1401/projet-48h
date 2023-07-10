@@ -1,5 +1,5 @@
 <?php
-class HistoriqueAchatRegime extends CI_Model
+class HistoriqueAchatRegime_Model extends CI_Model
 {
     private $idHistorique;
     private $idUtilisateur;

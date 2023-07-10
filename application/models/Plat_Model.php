@@ -1,5 +1,5 @@
 <?php
-class Plat extends CI_Model
+class Plat_Model extends CI_Model
 {
     private $idPlat;
     private $recette;

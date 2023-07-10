@@ -1,5 +1,5 @@
 <?php
- class ProgrammeRegime extends CI_Model
+ class ProgrammeRegime_Model extends CI_Model
  {
      private $idProgrammeRegime;
      private $jour;

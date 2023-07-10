@@ -1,5 +1,5 @@
 <?php
- class Code extends CI_Model
+ class Code_Model extends CI_Model
  {
      private $code;
      private $valeurCode;

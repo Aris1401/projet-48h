@@ -1,5 +1,5 @@
 <?php
-class ProfilUtilisateur extends CI_Model
+class ProfilUtilisateur_Model extends CI_Model
 {
     private $idProfilUtilisateur;
     private $idUtilisateur;

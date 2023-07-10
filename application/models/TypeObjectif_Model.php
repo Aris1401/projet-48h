@@ -1,5 +1,5 @@
 <?php
-class TypeObjectif extends CI_Model
+class TypeObjectif_Model extends CI_Model
 {
     private $idTypeObjectif;
     private $designationObjectif;

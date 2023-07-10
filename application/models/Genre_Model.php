@@ -1,5 +1,5 @@
 <?php
- class Genre extends CI_Model
+ class Genre_Model extends CI_Model
  {
      private $idGenre;
      private $designationGenre;

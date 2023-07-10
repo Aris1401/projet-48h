@@ -1,5 +1,5 @@
 <?php
-class Activite extends CI_Model
+class Activite_Model extends CI_Model
 {
     private $idActivite;
     private $designationActivite;

@@ -1,5 +1,5 @@
 <?php
-class Regime extends CI_Model
+class Regime_Model extends CI_Model
 {
     private $idRegime;
     private $designationRegime;

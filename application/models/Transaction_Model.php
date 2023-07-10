@@ -1,5 +1,5 @@
 <?php
- class Transaction extends CI_Model
+ class Transaction_Model extends CI_Model
  {
      private $idTransaction;
      private $dateTransaction;

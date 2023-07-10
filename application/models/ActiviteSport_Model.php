@@ -1,5 +1,5 @@
 <?php
- class ActiviteSport extends CI_Model
+ class ActiviteSport_Model extends CI_Model
  {
      private $idActiviteSport;
      private $idActivite;

@@ -1,5 +1,5 @@
 <?php
-class ValidationCode extends CI_Model
+class ValidationCode_Model extends CI_Model
 {
     private $idCode;
     private $idPersonne;
