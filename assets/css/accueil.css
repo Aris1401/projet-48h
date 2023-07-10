@@ -1,0 +1,57 @@
+.header-content {
+    width: 100%;
+    height: calc(100vh - 2rem);
+    
+    background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0)), url("../img/dejeuner-sante-emporter-dans-boite-lunch.jpg");
+    background-size: 100% calc(100% + 900px);
+    
+    padding: 3rem;
+    
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    
+    padding-bottom: 8rem;
+}
+
+.header-content > h1 {
+    text-transform: uppercase;
+}
+
+.header-content > .objectif-poids {
+    margin-top: 1rem;
+    
+    padding: 1rem;
+    background-color: white;
+    
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    
+    width: 300px;
+}
+
+.header-content > .objectif-poids > input[type = "text"] {
+    border: none;
+    border-bottom: 2px solid var(--black-olive);
+    
+    margin-top: .5rem;
+    width: 100%;
+}
+
+.header-content > .objectif-poids > input[type = "submit"] {
+    border: none;
+    
+    background-color: var(--shamrock-green);
+    
+    color: white;
+    
+    padding: .5rem 2rem;
+    
+    font-weight: bold;
+    
+    margin-top: .5rem;
+    margin-right: 0;
+    margin-left: auto;
+}

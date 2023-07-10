@@ -50,6 +50,9 @@
                     <div>
                         <input type="submit" value="Enregistrer Profil">
                     </div>
+                    <div>
+                        <a href="">Ajouter plus tard</a>
+                    </div>
                 </div>
             </form>
     </div>
