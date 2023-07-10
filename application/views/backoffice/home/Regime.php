@@ -1,3 +1,43 @@
+<?php
+require_once('path/to/Regime_Model.php');
+$regimes = [
+    [
+        'idRegime' => 1,
+        'designationRegime' => 'Regime 1',
+        'description' => 'Description du régime 1',
+        'image' => 'chemin/vers/image1.jpg',
+        'duree' => 30,
+        'variationPoids' => 5
+    ],
+    [
+        'idRegime' => 2,
+        'designationRegime' => 'Regime 2',
+        'description' => 'Description du régime 2',
+        'image' => 'chemin/vers/image2.jpg',
+        'duree' => 45,
+        'variationPoids' => 7
+    ]
+];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Régimes - CRUD</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -70,6 +110,42 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                <h1>Régimes - CRUD</h1>
+                    <h2>Ajouter un régime</h2>
+                    <form method="POST" action="">
+                        <div class="mb-3">
+                            <label for="designation" class="form-label">Désignation :</label>
+                            <input type="text" name="designation" id="designation" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description :</label>
+                            <textarea name="description" id="description" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </form>
+
+                    <h2>Liste des régimes</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Designation</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($regimes as $regime): ?>
+                                <tr>
+                                    <td><?php echo $regime['designationRegime']; ?></td>
+                                    <td><?php echo $regime['description']; ?></td>
+                                    <td>
+                                        <button class="btn btn-primary">Modifier</button>
+                                        <button class="btn btn-danger">Supprimer</button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
