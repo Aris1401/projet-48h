@@ -67,8 +67,30 @@ class ProfilUtilisateur_Model extends CI_Model
     {
         return $this->idGenre;
     }
+////////////////////////////////////INSERT PROFIL UTILISATEUR/////////////////////////////////////////////////////////
+public function doRegister($idProfilUtilisateur, $idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre)
+{
+    $query = "INSERT INTO Utilisateur (nom, prenom, email, motDePasse, idTypeObjectif, estAdmin) VALUES (%s, %s, %s, %s, %s, %s)";
+    $query = sprintf($query, $this->db->escape($idProfilUtilisateur), $this->db->escape($idUtilisateur),
+     $this->db->escape($poids), $this->db->escape($taille), $this->db->escape($dateDeNaissance),
+      $this->db->escape($idGenre));
+         
+    $this->db->query($query);
 
-   
+    return $this->db->insert_id();
+}
+//////////////////////////////////////////////MODIFIER PROFIL//////////////////////////////////////////////////////////////////////////
+public function doUpdate($idUtilisateur, $poids, $taille, $dateDeNaissance, $idGenre)
+{
+    $query = "UPDATE Utilisateur SET poids = %s, taille = %s, dateDeNaissance = %s, idGenre = %s WHERE idUtilisateur = %s";
+    $query = sprintf($query, $this->db->escape($poids), $this->db->escape($taille),
+     $this->db->escape($dateDeNaissance), $this->db->escape($idGenre), $this->db->escape($idUtilisateur));
+         
+    $this->db->query($query);
+
+    return $this->db->affected_rows();
+}
+
 }
 
 ?>

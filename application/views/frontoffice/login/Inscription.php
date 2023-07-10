@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="left">
                 <h1>S'Inscrire</h1>
                 
-                <form>
+                <form method="POST" action="<?php echo base_url("LoginRegister/validerInscription"); ?>">
                     <div class="field is-grouped">
                         <div class="field">
                             <label for="">Nom</label>
@@ -28,7 +28,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="field">
                             <label for="">Prenom</label>
                             <div class="control">
-                                <input type="password" placeholder="Prenom" name="prenom" value="mirija">
+                                <input type="text" placeholder="Prenom" name="prenom" value="mirija">
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="field">
                         <label for="">Mot de passe</label>
                         <div class="control">
-                            <input type="password" placeholder="Mot de passe" name="email" />
+                            <input type="password" placeholder="Mot de passe" name="motDePasse" />
                         </div>
                     </div>
                     <div class="buttons">
