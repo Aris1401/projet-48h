@@ -20,6 +20,7 @@ create table Utilisateur(
     prenom varchar(255) not null,
     email varchar(255) not null,
     motDePasse varchar(255) not null,
+    image varchar(255),
     idTypeObjectif integer not null,
     estAdmin integer not null, 
     Foreign Key (idTypeObjectif) REFERENCES TypeObjectif(idTypeObjectif)  

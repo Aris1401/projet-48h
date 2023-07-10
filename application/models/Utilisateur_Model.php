@@ -8,6 +8,7 @@
         private $prenom;
         private $email;
         private $motDePasse;
+        private $image;
         private $idTypeObjectif;
         private $estAdmin;
         
@@ -59,6 +60,16 @@
         public function getMotDePasse()
         {
             return $this->motDePasse;
+        }
+
+        public function setImage($image)
+        {
+            $this->image = $image;
+        }
+        
+        public function getImage()
+        {
+            return $this->image;
         }
         
         public function setIdTypeObjectif($idTypeObjectif)
