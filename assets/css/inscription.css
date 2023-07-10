@@ -1,0 +1,99 @@
+:root {
+  --black-olive: #3b413cff;
+  --cerise: #cf4d6fff;
+  --shamrock-green: #4da167ff;
+  --dark-pastel-green: #3bc14aff;
+  --baby-powder: #fbfef9ff;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../font/Montserrat-Regular.ttf");
+}
+
+body {
+  background-color: var(--shamrock-green);
+  font-family: "Montserrat";
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.container > .left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+}
+
+.container > .right {
+    width: 50%;
+}
+
+.container > .right > img {
+    transform: scaleX(-1);
+}
+
+.container > .left > h1 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+}
+
+.container > .left > form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.container .control > input {
+    padding: 0.75rem 1.25rem;
+    outline: none;
+    border: 2px solid #ffffff59;
+    background-color: transparent;
+    color: white;
+    
+    width: 100%;
+}
+
+.container > .left > form > .buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container > .left > form > .buttons > div {
+    width: 100%;
+}
+
+.container > .left > form > .buttons > div:nth-child(1) > input {
+  width: 100%;
+  background-color: var(--light-violet);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.container > .left > form > .buttons > div:nth-child(1) > input:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+

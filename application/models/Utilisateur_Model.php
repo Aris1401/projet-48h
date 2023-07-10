@@ -94,6 +94,64 @@
                 throw new Exception("Montant négatif");                
             }
         }
+
+        /////////////////////////////////////////LOGIN///////////////////////////////////////////////////////////////
+    public function doLogin($username, $password) {
+        $users_Table = "Utilisateur";
+
+        $query = "SELECT * FROM ".$users_Table." WHERE email = %s and motDePasse = %s";
+        $query = sprintf($query, $this->db->escape($username), $this->db->escape($password));
+
+        $resultat = $this->db->query($query);
+        $ligne_resultat = $resultat->row_array();
+
+        return $ligne_resultat;
+    }
+/////////////////////////////////////////////INSCRIPTION///////////////////////////////////////////////////////////
+public function doRegister($user) {
+    $query = "INSERT INTO Utilisateur (nom, prenom,email,motDePasse,idTypeObjectif,estAdmin) VALUES (%s, %s, %s, %s, %s, %s)";
+        $query = sprintf($query, $this->db->escape($user->getNom()), $this->db->escape($user->getPrenom())
+        ,$this->db->escape($user->getEmail()),$this->db->escape($user->getMotDePasse())
+        ,$this->db->escape($user->getIdTypeObjectif()), $this->db->escape($user->getEstAdmin()));
+        $this->db->query($query);
+
+        return $this->db->insert_id();
+}
+
+/////////////////////////////////////////////GET BY ID///////////////////////////////////////////////////////////
+    public function getUtilisateurById($id) {
+        $users_Table = "Utilisateur";
+
+        $query = "SELECT * FROM ".$users_Table." WHERE idUtilisateur = %d";
+        $query = sprintf($query, $this->db->escape($id));
+
+        $resultat = $this->db->query($query);
+        $ligne_resultat = $resultat->row_array();
+
+        if ($ligne_resultat == null) return null;
+
+        $utilisateur = new Utilisateur_Model();
+        $utilisateur->setIdUtilisateur($id);
+        $utilisateur->setNom($ligne_resultat['nom']);
+        $utilisateur->setPrenom($ligne_resultat['prenom']);
+        $utilisateur->setMotDePasse($ligne_resultat['motDePasse']);
+        $utilisateur->setIdTypeObjectif($ligne_resultat['idTypeObjectif']);
+        $utilisateur->setEstAdmin($ligne_resultat['estAdmin']);
+        return $utilisateur;
+    }
+//////////////////////////////////////////////MODIFIER UTILISATEUR//////////////////////////////////////////////////////////////////////////
+public function doUpdate($idUtilisateur, $nom, $prenom, $motDePasse, $idTypeObjectif, $estAdmin)
+{
+    $query = "UPDATE Utilisateur SET nom = %s, prenom = %s, motDePasse = %s, idTypeObjectif = %s, estAdmin = %s WHERE idUtilisateur = %s";
+    $query = sprintf($query, $this->db->escape($nom), $this->db->escape($prenom), $this->db->escape($motDePasse),
+        $this->db->escape($idTypeObjectif), $this->db->escape($estAdmin), $this->db->escape($idUtilisateur));
+
+    $this->db->query($query);
+
+    return $this->db->affected_rows();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
 ?>
