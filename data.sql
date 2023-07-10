@@ -87,3 +87,38 @@ create table ProgrammeRegime(
     Foreign Key (idPlat) REFERENCES Plat(idPlat),
     Foreign Key (idActiviteSport) REFERENCES ActiviteSport(idActiviteSport)
 );
+
+create table Code(
+    idCode INTEGER PRIMARY KEY AUTO_INCREMENT,
+    code varchar(5) not null,
+    valeurCode decimal not null,
+    etat integer not null
+);
+
+create table ValidationCode(
+    idvalidationCode INTEGER PRIMARY KEY AUTO_INCREMENT,
+    idCode integer not null,
+    idPersonne integer not null,
+    dateValidation date not null,
+    Foreign Key (idCode) REFERENCES Code(idCode),
+    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idutilisateur)
+);
+
+create table Transaction(
+    idTransaction INTEGER PRIMARY KEY AUTO_INCREMENT,
+    dateTransaction date not null,
+    sortie decimal not null,
+    entre decimal not null,
+    idUtilisateur integer not null,
+    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idutilisateur)
+);
+
+create table HistoriqueAchatRegime(
+    idHistorique INTEGER PRIMARY KEY AUTO_INCREMENT,
+    idUtilisateur integer not null,
+    idRegime integer not null,
+    montant decimal not null,
+    dateAchat date not null,
+    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idutilisateur),
+    Foreign Key (idRegime) REFERENCES Regime(idRegime)
+);
