@@ -96,7 +96,7 @@ create table Code(
 );
 
 create table ValidationCode(
-    idvalidationCode INTEGER PRIMARY KEY AUTO_INCREMENT,
+    idValidationCode INTEGER PRIMARY KEY AUTO_INCREMENT,
     idCode integer not null,
     idUtilisateur integer not null,
     dateValidation date not null,
