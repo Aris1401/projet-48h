@@ -118,26 +118,26 @@ class ValidationCode_Model extends CI_Model
     }
 
     public function validerCode($idCode)
-{
-    $existingValidationCode = $this->getById($idCode);
-    
-    if ($existingValidationCode) {
-        $dateValidation = date('Y-m-d');
-        $data = array(
-            'dateValidation' => $dateValidation
-        );
-        $this->db->where('idCode', $idCode);
-        $this->db->update('ValidationCode', $data);
-
-        $code = new Code_Model();
-        $code = $code->getById($idCode);
-        $code->updateCode($idCode,$code->getCode(),$code->getValeurCode(),10);
+    {
+        $existingValidationCode = $this->getById($idCode);
         
-        return true;
+        if ($existingValidationCode) {
+            $dateValidation = date('Y-m-d');
+            $data = array(
+                'dateValidation' => $dateValidation
+            );
+            $this->db->where('idCode', $idCode);
+            $this->db->update('ValidationCode', $data);
+
+            $code = new Code_Model();
+            $code = $code->getById($idCode);
+            $code->updateCode($idCode,$code->getCode(),$code->getValeurCode(),10);
+            
+            return true;
+        }
+        
+        return false;
     }
-    
-    return false;
-}
 
 
     public function refuserCode($idCode){
@@ -150,5 +150,4 @@ class ValidationCode_Model extends CI_Model
         return false;
     }
 }
-
 ?>
