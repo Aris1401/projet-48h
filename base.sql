@@ -75,7 +75,8 @@ create table Regime(
     description text not null,
     image varchar(255) not null,
     duree decimal not null,
-    variationPoids decimal not null
+    variationPoids decimal not null,
+    prixRegime decimal(18,5)
 );
 
 create table ProgrammeRegime(
