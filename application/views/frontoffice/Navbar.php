@@ -18,7 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 
                 <ul class="nav-links">
-                    <li class="nav-link"><a href="#">Accueil</a></li>
+                    <li class="nav-link"><a href="<?php echo base_url("Accueil") ?>">Accueil</a></li>
                     <li class="nav-link"><a href="#">Panier</a></li>
                 </ul>
                 
