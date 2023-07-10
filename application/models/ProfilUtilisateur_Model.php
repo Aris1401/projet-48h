@@ -7,6 +7,7 @@ class ProfilUtilisateur_Model extends CI_Model
     private $taille;
     private $dateDeNaissance;
     private $idGenre;
+    private $poidObjectif;
     
     public function setIdProfilUtilisateur($idProfilUtilisateur)
     {

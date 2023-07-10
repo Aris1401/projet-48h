@@ -56,6 +56,37 @@ class HistoriqueAchatRegime_Model extends CI_Model
     {
         return $this->dateAchat;
     }
+
+    public function getByIdUtilisateur($idUtilisateur){
+        $table_name = 'HistoriqueAchatRegime';
+
+        $query = "SELECT * FROM ".$table_name."WHERE idUtilisateur =  %i";
+        $query = sprintf($query, $this->db->escape($idUtilisateur));
+
+        $resultat = $this->db->query($query);
+        $results = array();        
+
+        if($resultat != null){
+            foreach ($resultat->result_array() as $data) {
+                array_push($results,$data);
+            }
+        }
+        else{
+            throw new Exception("Aucun historique pour cet utilisateur");
+        }
+        return $results;
+    }
+
+    public function getDepenseTotal($idUtilisateur){
+        $data = $this->getByIdUtilisateur($idUtilisateur);
+        $depense = 0;
+        if (!empty($data)) {
+            foreach ($data as $row) {
+                $depense = $depense + $row['montant'];
+            }
+        }
+        return 0;
+    }
 }
 
 ?>

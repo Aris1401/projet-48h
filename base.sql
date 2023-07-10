@@ -20,6 +20,7 @@ create table Utilisateur(
     prenom varchar(255) not null,
     email varchar(255) not null,
     motDePasse varchar(255) not null,
+    image varchar(255),
     idTypeObjectif integer not null,
     estAdmin integer not null, 
     Foreign Key (idTypeObjectif) REFERENCES TypeObjectif(idTypeObjectif)  
@@ -31,7 +32,7 @@ create table ProfilUtilisateur(
     poids decimal not null,
     taille decimal not null,
     dateDeNaissance DATE not null,
-    idGenre integer,
+    idGenre integer not null,
     Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur),
     Foreign Key (idGenre) REFERENCES Genre(idGenre)
 );
@@ -90,16 +91,16 @@ create table ProgrammeRegime(
 
 create table Code(
     idCode INTEGER PRIMARY KEY AUTO_INCREMENT,
-    code varchar(5) not null,
+    code varchar(5) UNIQUE not null,
     valeurCode decimal not null,
     etat integer not null
 );
 
 create table ValidationCode(
-    idvalidationCode INTEGER PRIMARY KEY AUTO_INCREMENT,
+    idValidationCode INTEGER PRIMARY KEY AUTO_INCREMENT,
     idCode integer not null,
     idUtilisateur integer not null,
-    dateValidation date not null,
+    dateValidation date,
     Foreign Key (idCode) REFERENCES Code(idCode),
     Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur)
 );
