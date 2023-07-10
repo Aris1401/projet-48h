@@ -95,6 +95,11 @@
             }
         }
 
+        public function ajoutGainOuPerte($poid){
+            session_start();
+            $_SESSION['poidCible'] = $poid;
+        }
+
         /////////////////////////////////////////LOGIN///////////////////////////////////////////////////////////////
     public function doLogin($username, $password) {
         $users_Table = "Utilisateur";
@@ -153,5 +158,4 @@ public function doUpdate($idUtilisateur, $nom, $prenom, $motDePasse, $idTypeObje
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
-
 ?>
