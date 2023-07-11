@@ -52,11 +52,11 @@ class Admin extends CI_Controller{
     }
 
     public function statistique(){
-        $this->load->model("Abonnement_Model","abonnement");
+        $this->load->model("AbonnementJoinType_Model","abonnement");
 
         $data = array('title' => "Statistiques");
 
-        $content = array('abonnements' => $this->abonnement->getAllAbonnement());
+        $content = array('abonnements' => $this->abonnement->getAllAbonnements());
 
         $this->load->view("backoffice/Header", $data);
         $this->load->view("backoffice/home/Statistique", $content);
