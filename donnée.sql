@@ -90,8 +90,8 @@ INSERT INTO HistoriqueAchatRegime (idUtilisateur, idRegime, montant, dateAchat) 
 (2, 2, 80.0, '2023-06-05'),
 (3, 3, 60.0, '2023-06-10');
 
-INSERT INTO TypeAbonnement (designation, prix) VALUES
-('Gold', 50000);
+INSERT INTO TypeAbonnement (designation, prix, reduction) VALUES
+('Gold', 50000, 15);
 
 INSERT INTO Abonnement (idUtilisateur, idTypeAbonnement, dateFin) VALUES
 (1, 1, '2024-06-30');

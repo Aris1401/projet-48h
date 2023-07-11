@@ -142,7 +142,8 @@ create table HistoriqueAchatRegime(
 create table TypeAbonnement(
     idTypeAbonnement INTEGER PRIMARY KEY AUTO_INCREMENT,
     designation varchar(255) not null,
-    prix decimal not null
+    prix decimal not null,
+    reduction decimal not null
 );
 
 create table Abonnement(
