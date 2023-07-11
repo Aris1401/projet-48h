@@ -46,7 +46,7 @@ INSERT INTO Plat (recette, nom, calorie, description, image) VALUES
 ('Carotte,crème liquide,oignon', 'Soupe de carotte', 150, 'Soupe de carotte bien chaude', '#.jpg'),
 ('Tomate,crème liquide,oignon', 'Soupe de tomate', 200, 'Soupe de tomate bien onctueuse', '#.jpg'),
 ('Spaghetti,coulis de tomate,viande haché', 'Pâtes bolognaise', 500, 'Pâtes servies avec une sauce bolognaise.', '#.jpg'),
-('Spaghetti,fromage,thyn','Pâtes carbonara', 450, 'Pâtes carbonara bien frais', '#.jpg'),
+('Spaghetti,fromage,thyn','Pâtes carbonara', 450, 'Pâtes carbonara bien frais', '#.jpg');
 
 INSERT INTO Regime (designationRegime, description, image, duree, variationPoids, prixRegime) VALUES
 ('Régime équilibré', 'Régime équilibré avec une répartition adéquate des nutriments.', '#.jpg', 30, -2, 49.99),
