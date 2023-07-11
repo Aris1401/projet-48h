@@ -78,4 +78,5 @@ class Transaction_total_View extends CI_Model
         return $utilisateur;
  
 }
+}
 ?>

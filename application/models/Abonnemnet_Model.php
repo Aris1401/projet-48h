@@ -1,4 +1,4 @@
-<?
+<?php
 class Abonnement_Model extends CI_Model
 {
     private $idAbonnement;
