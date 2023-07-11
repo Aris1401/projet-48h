@@ -1,3 +1,4 @@
+<?php
 class TypeAbonnement_Model extends CI_Model
 {
     private $idTypePourcentage;
@@ -45,4 +46,4 @@ class TypeAbonnement_Model extends CI_Model
         $this->reduction = $reduction;
     }
 }
-
+?>
