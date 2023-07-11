@@ -78,15 +78,6 @@ class Regime_Model extends CI_Model
     public function getPrixRegime(){
         return $this->prixRegime;
     }
-    public function setPrixRegime($prixRegime)
-    {
-        $this->prixRegime = $prixRegime;
-    }
-    
-    public function getPrixRegime()
-    {
-        return $this->prixRegime;
-    }
  //////////////////////////////////////   
     public function AllRegime() {
         $query = $this->db->get('Regime');
@@ -137,6 +128,24 @@ class Regime_Model extends CI_Model
             $regime->rapport = $rapport_regime;
             $regime->prix = $prix_temp;
             $regime->duree_reel = $duree_temp;
+            
+            // Programme
+            $this->load->model("ProgrammeRegime_Model", "ProgrammeRegime");
+            $this->load->model("Plat_Model", "Plat");
+            $this->load->model("Sport_Model", "Sport");
+            $this->load->model("ActiviteSport_Model", "ActiviteSport");
+            $programme = $this->ProgrammeRegime->getProgrammeRegime($regime->idRegime);
+            
+            foreach($programme as $p) {
+                $p->plat = $this->Plat->getPlat($p->idPlat); 
+                
+                $activite_sport = $this->ActiviteSport->getActiviteSport($p->idActiviteSport);
+                $activite_sport->sport = $this->Sport->getSport($activite_sport->idSport);
+                
+                $p->sport_a_faire = $activite_sport;
+            }
+            
+            $regime->programme = $programme;
         }
         
         // Sort regimes by rapport

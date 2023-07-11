@@ -57,6 +57,18 @@ class Abonnement_Model extends CI_Model
         $this->dateFin = $dateFin;
     }
     
+    public function ajouterAbonnement($type, $id_personne) {
+        date_default_timezone_set("Asia/Kuwait");
+        
+        $data = array(
+            'idUtilisateur' => $id_personne,
+            'idTypeAbonnement' => $type, 
+            'dateDebut' => date('Y-m-d')
+        );
+        
+        $this->db->insert('Abonnement', $data);
+    }
+    
     public function getAbonnementUser($idUser) {
         $query = $this->db->where(array('idUtilisateur = '=> $idUser, 'dateFin = ' => null))->get('Abonnement');
         

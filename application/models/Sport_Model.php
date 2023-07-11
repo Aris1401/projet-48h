@@ -34,6 +34,11 @@ class Sport_Model extends CI_Model
     {
         return $this->description;
     }
+    
+    public function getSport($id) {
+        $query = $this->db->where("idSport", $id)->get("Sport");
+        return $query->row();
+    }
 }
 
 ?>

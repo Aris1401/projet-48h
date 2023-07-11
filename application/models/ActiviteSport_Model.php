@@ -67,6 +67,11 @@
      {
          return $this->variationPoids;
      }
+     
+     public function getActiviteSport($id) {
+         $query = $this->db->where("idActiviteSport", $id)->get("ActiviteSport");
+         return $query->row();
+     }
  }
  
 ?>

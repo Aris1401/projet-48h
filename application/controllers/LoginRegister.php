@@ -131,11 +131,6 @@ class LoginRegister extends CI_Controller{
 public function profilUtilisateur() {
     session_start();
     
-    if (isset($_SESSION['current_user'])) {
-        redirect(base_url("Accueil"));
-        return;
-    }
-    
     $this->load->view("frontoffice/login/ProfilUtilisateur");
 }
 

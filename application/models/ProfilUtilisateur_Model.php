@@ -113,9 +113,9 @@ public function getProfilUtilisateurById($idUtilisateur, $poids, $taille, $dateD
 }
 //////////////////////////////////////////////////////////////////
 public function getProfilUtilisateurByIdd($id) {
-    $users_Table = "Utilisateur";
+    $users_Table = "ProfilUtilisateur";
 
-    $query = "SELECT * FROM ".$users_Table." WHERE ProfilUtilisateur = %d";
+    $query = "SELECT * FROM ".$users_Table." WHERE idProfilUtilisateur = %s";
     $query = sprintf($query, $this->db->escape($id));
 
     $resultat = $this->db->query($query);
@@ -132,6 +132,14 @@ public function getProfilUtilisateurByIdd($id) {
     $utilisateur->setIdGenre($ligne_resultat['idGenre']);
     return $utilisateur;
 
+}
+
+public function getIMC($idUtilisateur) {
+    $profil = $this->ProfilUtilisateur->getProfilUtilisateurByIdd($idUtilisateur);
+    
+    $imc = $profil->taille == 0 ? 0 : $profil->poids / (($profil->taille / 100) * ($profil->taille / 100));
+    
+    return $imc;
 }
 }
 

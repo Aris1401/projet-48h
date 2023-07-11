@@ -186,5 +186,10 @@ require_once('ValidationCode_Model.php');
             
             return false;
         }
+        
+        public function getAllCode() {
+            $query = $this->db->get("code");
+            return $query->result();
+        }
     } 
 ?>

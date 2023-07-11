@@ -56,6 +56,12 @@
      {
          return $this->idActiviteSport;
      }
+     
+     public function getProgrammeRegime($id) {
+         $query = $this->db->where('idRegime', $id)->get('ProgrammeRegime');
+         
+         return $query->result();
+     }
  }
  
 ?>

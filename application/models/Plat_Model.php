@@ -81,6 +81,11 @@ class Plat_Model extends CI_Model
     
         return $currentObjects;
     }
+    
+    public function getPlat($idPlat) {
+        $query = $this->db->where("idPlat", $idPlat)->get("plat");
+        return $query->row();
+    }
 
 
 }

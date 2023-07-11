@@ -14,11 +14,11 @@
             <form method="POST" action="<?php echo base_url("LoginRegister/validerLogin"); ?>">
                 <div class="field">
                     <label for="">Email</label>
-                    <input type="text" placeholder="Email" name="email" value="mirija@gmail.com">
+                    <input type="text" placeholder="Email" name="email" value="john.doe@example.com">
                 </div>
                 <div class="field">
                     <label for="">Mot de passe</label>
-                    <input type="password" placeholder="Mot de passe" name="motDePasse" value="mirija">
+                    <input type="password" placeholder="Mot de passe" name="motDePasse" value="password123">
                 </div>
                 <div class="buttons">
                     <div>

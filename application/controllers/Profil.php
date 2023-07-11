@@ -13,6 +13,9 @@
 class Profil extends CI_Controller{
     public function index() {
         $this->load->model("Utilisateur_Model", "Utilisateur");
+        $this->load->model("TypeAbonnement_Model", "TypeAbonnement");
+        $this->load->model("ProfilUtilisateur_Model", "ProfilUtilisateur");
+        $this->load->model("Code_Model", "Code");
         
         session_start();
         
@@ -21,9 +24,18 @@ class Profil extends CI_Controller{
             return;
         }
         
+        $current_abonnement = null;
+        if (isset($_SESSION['abonnement'])) {
+            $current_abonnement = $_SESSION['abonnement'];
+        }
+        
         $content = array (
             'nom' => $_SESSION['current_user']->getNom(),
-            'prenom' => $_SESSION['current_user']->getPrenom()
+            'prenom' => $_SESSION['current_user']->getPrenom(),
+            'abonnements' => $this->TypeAbonnement->getAllTypeAbonnement(),
+            'current_abonnement' => $current_abonnement,
+            'profil' => $this->ProfilUtilisateur->getProfilUtilisateurByIdd($_SESSION['current_user']->getIdUtilisateur()),
+            'allCode' => $this->Code->getAllCode()
         );
         
         $data = array('title' => "Profil");
@@ -65,6 +77,30 @@ class Profil extends CI_Controller{
         {
             redirect('loginRegister?error=1');
         }
-        }
+    }
+    
+    public function Sabonner() {
+        $typeabonnement = $this->input->get("abonnement");
+        
+        $this->load->model("Abonnement_Model", "Abonnement");
+        $this->load->model("Utilisateur_Model", "Utilisateur");
+        
+        session_start();
+        
+        $this->Abonnement->ajouterAbonnement($typeabonnement, $_SESSION['current_user']->getIdUtilisateur());
+        $_SESSION['abonnement'] = $this->Abonnement->getAbonnementUser($_SESSION['current_user']->getIdUtilisateur());
+        
+        redirect(base_url("Profil"));
+    }
+    
+    public function getIMC() {
+        $this->load->model("Utilisateur_Model", "Utilisateur");
+        $this->load->model("ProfilUtilisateur_Model", "ProfilUtilisateur");
+        
+        session_start();
+        
+        $imc = $this->ProfilUtilisateur->getIMC($_SESSION['current_user']->getIdUtilisateur());
+        echo $imc;
+    }
     
 }

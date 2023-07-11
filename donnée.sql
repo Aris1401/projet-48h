@@ -61,6 +61,9 @@ INSERT INTO RegimePourcentage (idRegime, idTypePourcentage, pourcentage) VALUES
 INSERT INTO ProgrammeRegime (jour, idRegime, idPlat, idActiviteSport) VALUES
 (1, 1, 1, 1),
 (2, 2, 2, 2),
+(3, 3, 3, 3),
+(1, 1, 1, 1),
+(2, 2, 2, 2),
 (3, 3, 3, 3);
 
 INSERT INTO Code (code, valeurCode, etat) VALUES

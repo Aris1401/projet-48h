@@ -1,4 +1,1 @@
-const carousels = bulmaCarousel.attach('#carousel-demo', {
-			slidesToScroll: 1,
-			slidesToShow: 4
-		});
+const carousels = bulmaCarousel.attach('#programme-carousel');

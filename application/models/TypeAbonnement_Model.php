@@ -30,6 +30,11 @@ class TypeAbonnement_Model extends CI_Model
         $query = $this->db->where('idTypeAbonnement = ', $idTypeAbonnement)->get('TypeAbonnement');
         return $query->row();
     }
+    
+    public function getAllTypeAbonnement() {
+        $query = $this->db->get('TypeAbonnement');
+        return $query->result();
+    }
 
     public function getPrix()
     {

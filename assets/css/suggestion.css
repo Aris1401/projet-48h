@@ -37,7 +37,7 @@
     justify-content: space-between;
     flex-direction: column;
     
-    height: 300px;
+    height: 350px;
 }
 
 .main-suggestion > .right-content > .payer-button {
@@ -49,6 +49,16 @@
     font-size: 1.5rem;
     
     padding: .5rem;  
+}
+
+.right-content .menu {
+    padding: 1rem;
+}
+
+.right-content .menu > ul{
+    padding-left: 1rem;
+    
+    list-style: none;
 }
 
 .main-suggestion > .right-content > .payer-button > a {
@@ -64,14 +74,21 @@
     font-weight: bold;
 }
 
-.programme {
-    margin-top: 1rem;
+
+.program-item {
+    background-color: white;
+    
+    height: 200px;
+    width: 300px;
+    
+    padding: 1rem;
+    
+    margin-right: 3rem;
 }
 
-.programme, th, td, tr{
-    border-collapse: collapse;
-}
-
-.programme th, td, tr {
-    padding: 1rem 2rem;
+#programme-carousel {
+    display: flex;
+    gap: 0rem;
+    
+    
 }
