@@ -1,5 +1,5 @@
 <div class="container-fluid py-4">
-         <form action="getValeurInsert" method="post">
+      <form method="POST" action="<?php echo base_url("Admin/insertRegime"); ?>"
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header pb-0">
@@ -48,7 +48,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Variation Poids</label>
-                                    <input class="form-control" type="number" step="0.01" name="variation-poids" id="variation-poids">
+                                    <input class="form-control" type="number" step="0.01" name="variationPoids" id="variation-poids">
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Moyenne Prix Regime</label>
-                                    <input class="form-control" type="number" step="0.01" name="prix-regime" id="prix-regime" min="0">
+                                    <input class="form-control" type="number" step="0.01" name="prixRegime" id="prix-regime" min="0">
                                 </div>
                             </div>
                         </div>
