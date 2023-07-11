@@ -59,6 +59,8 @@
 ////////////////////////////////////////////////////////////////////
      public function ajouter($sortie,$entree,$idUtilisateur)
     {
+         date_default_timezone_set("Asia/Kuwait");
+         
         $data = array(
             'dateTransaction' => date('Y-m-d'),
             'sortie' => $sortie,
@@ -74,7 +76,7 @@
     
         $table_name = 'Transaction';
 
-        $query = "SELECT * FROM ".$table_name."WHERE idUtilisateur =  %i";
+        $query = "SELECT * FROM ".$table_name." WHERE idUtilisateur =  %s";
         $query = sprintf($query, $this->db->escape($idUtilisateur));
 
         $resultat = $this->db->query($query);
@@ -95,8 +97,8 @@ public function  InsertEntre($idUtilisateur,$dateTransaction,$entre)
 {
     $query = "INSERT INTO Transaction (dateTransaction,sortie,entre,idUtilisateur) VALUES (%s, %s, %s, %s)";
     $query = sprintf($query, $this->db->escape($designationRegime),
-     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree))
-     $this->db->escape($variationPoids), ;    
+     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree),
+     $this->db->escape($variationPoids));    
     $this->db->query($query);
 
     return $this->db->insert_id();
@@ -106,8 +108,8 @@ public function  InsertSortie($idUtilisateur,$dateTransaction,$entre)
 {
     $query = "INSERT INTO Transaction (dateTransaction,sortie,entre,idUtilisateur) VALUES (%s, %s, %s, %s)";
     $query = sprintf($query, $this->db->escape($designationRegime),
-     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree))
-     $this->db->escape($variationPoids), ;    
+     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree),
+     $this->db->escape($variationPoids));    
     $this->db->query($query);
 
     return $this->db->insert_id();

@@ -12,11 +12,25 @@
  */
 class LoginRegister extends CI_Controller{
     public function login() {
+        session_start();
+        
+        if (isset($_SESSION['current_user'])) {
+            redirect(base_url("Accueil"));
+            return;
+        }
+        
         $this->load->view("frontoffice/login/Login");
     }
 /////////////////////////////////////////////////
    
     public function inscription() {
+        session_start();
+        
+        if (isset($_SESSION['current_user'])) {
+            redirect(base_url("Accueil"));
+            return;
+        }
+        
         $this->load->view("frontoffice/login/Inscription");
     }
 ////////////////////////////////////////////////
@@ -60,6 +74,7 @@ class LoginRegister extends CI_Controller{
             $motDePasse = $this->input->post('motDePasse');
             
             $this->load->model('Utilisateur_Model', 'user');
+            $this->load->model('Abonnement_Model', 'Abonnement');
             session_start();
 
             $ligne_resultat = $this->user->doLogin($email, $motDePasse);
@@ -72,14 +87,22 @@ class LoginRegister extends CI_Controller{
                 if (!isset($_SESSION['current_user'])) {
                     $_SESSION['current_user'] = $this->user->getUtilisateurById($ligne_resultat['idUtilisateur']);
                 }
+                $_SESSION['abonnement'] = $this->Abonnement->getAbonnementUser($ligne_resultat['idUtilisateur']);
                 echo "True|";
             }
 
-            echo var_dump($_SESSION['current_user']);
+            echo var_dump($_SESSION['abonnement']);
         }           
 ///////////////////////////////////////////////////
    
     public function suiteInscription() {
+        session_start();
+        
+        if (isset($_SESSION['current_user'])) {
+            redirect(base_url("Accueil"));
+            return;
+        }
+        
         $this->load->view("frontoffice/login/SuiteInscription");
     }
 
@@ -106,6 +129,13 @@ class LoginRegister extends CI_Controller{
 ///////////////////////////////////////////////////
    
 public function profilUtilisateur() {
+    session_start();
+    
+    if (isset($_SESSION['current_user'])) {
+        redirect(base_url("Accueil"));
+        return;
+    }
+    
     $this->load->view("frontoffice/login/ProfilUtilisateur");
 }
 

@@ -3,7 +3,7 @@
     <section class="main-header">
         <div class="profile-information">
             <img src="<?php echo base_url("assets/img/rasoa.png") ?>" alt="Profile">
-            <h3>Rasoa RakotoRakoto</h3>
+            <h3><?php echo $prenom ?> <?php echo $nom ?></h3>
         </div>
     </section>
     
@@ -14,7 +14,7 @@
                 
                 <div class="wallet-footer">
                     <a href="#">Utiliser un code</a>
-                    <p class="balance">2000 Ar</p>
+                    <p class="balance">0 Ar</p>
                 </div>
             </div>
             
@@ -56,6 +56,10 @@
             </form>
         </div>
     </section>
-
+    <script src="<?php echo base_url("assets/js/jquery/jquery-3.7.0.min.js") ?>"></script>
+    <script>
+        var url = "<?php echo base_url("Profil/GetBalance") ?>";
+    </script>
+    <script src="<?php echo base_url("assets/js/profil.js") ?>"></script>
     </body>
 </html>

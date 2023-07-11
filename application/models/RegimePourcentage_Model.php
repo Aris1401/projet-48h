@@ -48,3 +48,5 @@ class RegimePourcentage_Model extends CI_Model
 }
 ?>
 
+}
+?>

@@ -91,7 +91,7 @@ create table RegimePourcentage(
     pourcentage decimal not null,
     Foreign Key (idRegime) REFERENCES Regime(idRegime),
     Foreign Key (idTypePourcentage) REFERENCES TypePourcentage(idTypePourcentage)
-)
+);
 
 create table ProgrammeRegime(
     idProgrammeRegime INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -150,8 +150,8 @@ create table Abonnement(
     idAbonnement INTEGER PRIMARY KEY AUTO_INCREMENT,
     idUtilisateur integer not null,
     idTypeAbonnement integer not null,
-    dateDebut date not null,
-    dateFin date not null,
+    dateDebut date,
+    dateFin date,
     Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur),
     Foreign Key (idTypeAbonnement) REFERENCES TypeAbonnement(idTypeAbonnement)
 );

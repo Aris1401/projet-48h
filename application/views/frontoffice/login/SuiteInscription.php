@@ -29,6 +29,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <label class="radio" for="0">
                             Prendre du poids
                         </label>
+                        
+                        <input type="radio" id="0" value="2" name="objectif">
+                        <label class="radio" for="0">
+                            Atteindre son IMC ideal
+                        </label>
                     </div>
                         
                     <div class="buttons">

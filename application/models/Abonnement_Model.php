@@ -56,6 +56,24 @@ class Abonnement_Model extends CI_Model
     {
         $this->dateFin = $dateFin;
     }
+    
+    public function getAbonnementUser($idUser) {
+        $query = $this->db->where(array('idUtilisateur = '=> $idUser, 'dateFin = ' => null))->get('Abonnement');
+        
+        $abonnement = null;
+        $count = 0;
+        
+        $this->load->model('TypeAbonnement_Model', 'TypeAbonnement');
+        foreach ($query->result() as $row) {
+            $count++;
+            
+            $abonnement = $row;
+            
+            $abonnement->type = $this->TypeAbonnement->getTypeAbonnement($abonnement->idTypeAbonnement);
+        }
+        
+        return $abonnement;
+    }
 
     public function getAllAbonnement()
     {
