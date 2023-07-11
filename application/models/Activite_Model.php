@@ -34,6 +34,18 @@ class Activite_Model extends CI_Model
     {
         return $this->description;
     }
+    
+    public function AllActivite() {
+        $query = $this->db->get('Activite');
+        
+        $regime = array();
+        
+        foreach ($query->result() as $row) {
+            array_push($regime, $row);
+        }
+        
+        return $regime;
+    }
 //////////Insert Activite
 public function doRegister($designationActivite, $description)
 {

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "FOCO";
+  src: url("../fonts/FOCO.TTF");
+}
+
+* {
+  font-family: "FOCO";
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --jet: #3c3744ff;
+  --duke-blue: #090c9bff;
+  --byzantine-blue: #3d52d5ff;
+  --powder-blue: #b4c5e4ff;
+  --ivory: #fbfff1ff;
+}
