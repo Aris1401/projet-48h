@@ -68,6 +68,18 @@ class Regime_Model extends CI_Model
         return $this->variationPoids;
     }
     
+    public function AllRegime() {
+        $query = $this->db->get('Regime');
+        
+        $regime = array();
+        
+        foreach ($query->result() as $row) {
+            array_push($regime, $row);
+        }
+        
+        return $regime;
+    }
+    
     public function getRegimeFromPoids($variance) {
         $this->load->model('Utilisateur_Model', 'Utilisateur');
         

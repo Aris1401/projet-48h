@@ -4,7 +4,7 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="d-flex align-items-center">
-                            <p class="mb-0">Activite</p>
+                            <p class="mb-0">Activite Sportive</p>
                         </div>
                     </div>
                     <div class="card-body">
@@ -25,43 +25,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Image</label>
-                                    <input class="form-control" type="file" name="image" id="image">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Duree</label>
-                                    <input class="form-control" type="number" step="0.01" name="duree" id="duree" min="0">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Variation Poids</label>
-                                    <input class="form-control" type="number" step="0.01" name="variation-poids" id="variation-poids">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Moyenne Prix Regime</label>
-                                    <input class="form-control" type="number" step="0.01" name="prix-regime" id="prix-regime" min="0">
-                                </div>
-                            </div>
-                        </div>
-                    
                         <input type="submit" value="Ajouter Code" class="btn btn-primary">
                     </div>
                 </div>
@@ -73,7 +36,7 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="d-flex align-items-center">
-                            <p class="mb-0">Liste des Regimes</p>
+                            <p class="mb-0">Liste des Activites</p>
                         </div>
                     </div>
 
@@ -85,8 +48,6 @@
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Designation</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Duree</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Variation Poids</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prix Regime</th>
                                             <th class="text-secondary opacity-7"></th>
                                             <th class="text-secondary opacity-7"></th>
                                             <th class="text-secondary opacity-7"></th>
@@ -98,16 +59,10 @@
                                     <?php foreach($regimes as $item): ?>
                                         <tr>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0"><?php echo $item->designationRegime ?></p>
+                                                <p class="text-xs font-weight-bold mb-0"><?php echo $item->designationActivite ?></p>
                                             </td>
                                             <td>
                                                 <p class="text-xs text-secondary mb-0"><?php echo $item->duree ?></p>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs text-secondary mb-0"><?php echo $item->variationPoids ?></p>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs text-secondary mb-0"><?php echo $item->prixRegime ?></p>
                                             </td>
                                         
                                             <td class="align-middle">
