@@ -101,6 +101,7 @@ class LoginRegister extends CI_Controller{
             redirect('loginRegister?error=1');
         }
         }
+        
 ///////////////////////////////////////////////////
    
 public function profilUtilisateur() {
@@ -124,12 +125,12 @@ public function validerProfilUtilisateur()  {
     if (check_inputs(array($Poids,$Taille,$DateDeNaissance,$Genre)))
      {
             $this->profilUtilisateur->doRegister($current_user->getIdUtilisateur(),$Poids,$Taille,$DateDeNaissance,$Genre);
-            redirect('LoginRegister/profilUtilisateur');
+            redirect('Accueil/index');
     } 
     else
     {
         redirect('loginRegister?error=1');
     }
     }  
-
+//////////////////////////////////////////////////
 }
