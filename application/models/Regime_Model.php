@@ -81,10 +81,8 @@ class Regime_Model extends CI_Model
     }
     
     public function getRegimeFromPoids($variance) {
-        $this->load->model('Utilisateur_Model', 'Utilisateur');
-        
         // Obtenir objectif de utilisateur
-        session_start();
+        if (session_status() == null) session_start();
         $current_utilisateur = $_SESSION['current_user'];
         $query = ($this->db->get_where('Utilisateur', array('idUtilisateur' => $current_utilisateur->getIdUtilisateur())));
         
@@ -113,6 +111,8 @@ class Regime_Model extends CI_Model
             $prix_temp = $regime->duree == 0 ? 0 : ($duree_temp * $regime->prixRegime) / $regime->duree;
             
             $rapport_regime = $prix_temp == 0 ? 0 : $duree_temp / $prix_temp;
+            
+            $regime->pour = $variance;
             
             $regime->rapport = $rapport_regime;
             $regime->prix = $prix_temp;

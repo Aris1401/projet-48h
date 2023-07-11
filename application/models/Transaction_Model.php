@@ -59,6 +59,8 @@
 
      public function ajouter($sortie,$entree,$idUtilisateur)
     {
+         date_default_timezone_set("Asia/Kuwait");
+         
         $data = array(
             'dateTransaction' => date('Y-m-d'),
             'sortie' => $sortie,
@@ -73,7 +75,7 @@
     
         $table_name = 'Transaction';
 
-        $query = "SELECT * FROM ".$table_name."WHERE idUtilisateur =  %i";
+        $query = "SELECT * FROM ".$table_name." WHERE idUtilisateur =  %s";
         $query = sprintf($query, $this->db->escape($idUtilisateur));
 
         $resultat = $this->db->query($query);

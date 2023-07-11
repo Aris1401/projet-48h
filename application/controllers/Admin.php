@@ -12,6 +12,13 @@
  */
 class Admin extends CI_Controller{
     public function index() {
+        session_start();
+        
+        if (!isset($_SESSION['current_user'])) {
+            redirect(base_url("LoginRegister/Login"));
+            return;
+        }
+        
         $data = array('title' => "Statistiques");
         $this->load->view("backoffice/Header", $data);
         $this->load->view("backoffice/home/Index");
@@ -19,6 +26,13 @@ class Admin extends CI_Controller{
     }
     
     public function regime() {
+        session_start();
+        
+        if (!isset($_SESSION['current_user'])) {
+            redirect(base_url("LoginRegister/Login"));
+            return;
+        }
+        
         $this->load->model("Regime_Model", "Regime");
         
         $data = array('title' => "Regime");
@@ -30,6 +44,13 @@ class Admin extends CI_Controller{
     }
     
     public function activite() {
+        session_start();
+        
+        if (!isset($_SESSION['current_user'])) {
+            redirect(base_url("LoginRegister/Login"));
+            return;
+        }
+        
         $this->load->model("Activite_Model", "Activite");
         
         $data = array('title' => "Activite Sportive");
@@ -41,6 +62,13 @@ class Admin extends CI_Controller{
     }
     
     public function validation() {
+        session_start();
+        
+        if (!isset($_SESSION['current_user'])) {
+            redirect(base_url("LoginRegister/Login"));
+            return;
+        }
+        
         $this->load->model("ValidationCode_Model", "ValidationCode");
         
         $data = array('title' => "Activite Sportive");

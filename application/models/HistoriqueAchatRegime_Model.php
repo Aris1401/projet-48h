@@ -87,6 +87,21 @@ class HistoriqueAchatRegime_Model extends CI_Model
         }
         return 0;
     }
+    
+    public function ajouterHistorique($regime, $prix) {
+        date_default_timezone_set("Asia/Kuwait");
+        
+        $id_user = $_SESSION['current_user']->getIdUtilisateur();
+        
+        $data = array(
+            'idRegime' => $regime,
+            'idUtilisateur' => $id_user,
+            'montant' => $prix,
+            'dateAchat' => date("Y-m-d")
+        );
+        
+        $this->db->insert('HistoriqueAchatRegime', $data);
+    }
 }
 
 ?>
