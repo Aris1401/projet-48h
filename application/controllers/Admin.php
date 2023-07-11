@@ -48,10 +48,14 @@ public function activite() {
     $this->load->view("backoffice/Footer");
 }
     public function statistique(){
+        $this->load->model("Abonnement_Model","abonnement");
+
         $data = array('title' => "Statistiques");
 
+        $content = array('abonnements' => $this->abonnement->getAllAbonnement());
+
         $this->load->view("backoffice/Header", $data);
-        $this->load->view("backoffice/home/Statistique");
+        $this->load->view("backoffice/home/Statistique", $content);
         $this->load->view("backoffice/Footer");
     }
 

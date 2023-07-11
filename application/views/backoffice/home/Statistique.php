@@ -1,7 +1,5 @@
 <?php
-require_once('Abonnement_Model.php');
-$abonnementModel = new Abonnement_Model();
-$abonnements = $abonnementModel->getAllAbonnement();
+$abonnementModel = $abonnements;
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +33,7 @@ $abonnements = $abonnementModel->getAllAbonnement();
 
     <script>
         // Récupérer les données des abonnements
-        const abonnementsData = <?php echo json_encode($abonnements); ?>;
+        const abonnementsData = <?php echo json_encode($abonnementModel); ?>;
 
         // Convertir les données en tableaux pour les labels et les valeurs
         const labels = abonnementsData.map(abonnement => abonnement.designation);

@@ -1,39 +1,32 @@
--- Table TypeObjectif
 INSERT INTO TypeObjectif (designationObjectif) VALUES
 ('Perte de poids'),
 ('Prise de masse musculaire'),
 ('Remise en forme');
 
--- Table Genre
 INSERT INTO Genre (designationGenre) VALUES
 ('Homme'),
 ('Femme');
 
--- Table Utilisateur
 INSERT INTO Utilisateur (nom, prenom, email, motDePasse, image, idTypeObjectif, estAdmin) VALUES
 ('Doe', 'John', 'john.doe@example.com', 'password123', 'image1.jpg', 1, 0),
 ('Smith', 'Jane', 'jane.smith@example.com', 'password456', 'image2.jpg', 2, 1),
 ('Johnson', 'David', 'david.johnson@example.com', 'password789', 'image3.jpg', 3, 0);
 
--- Table ProfilUtilisateur
 INSERT INTO ProfilUtilisateur (idUtilisateur, poids, taille, dateDeNaissance, idGenre) VALUES
 (1, 70.5, 175, '1990-05-15', 1),
 (2, 65.2, 165, '1985-09-22', 2),
 (3, 80.8, 180, '1995-02-10', 1);
 
--- Table Activite
 INSERT INTO Activite (designationActivite, description) VALUES
 ('Course à pied', 'Activité de course à pied en plein air.'),
 ('Musculation', 'Entraînement en salle de musculation.'),
 ('Yoga', 'Pratique du yoga pour la relaxation et la souplesse.');
 
--- Table Sport
 INSERT INTO Sport (designationSport, description) VALUES
 ('Football', 'Jeu de football en équipe.'),
 ('Natation', 'Nage dans la piscine pour entraînement cardio.'),
 ('Tennis', 'Pratique du tennis sur le court.');
 
--- Table ActiviteSport
 INSERT INTO ActiviteSport (idActivite, idSport, duree, nombre, variationPoids) VALUES
 (1, 1, 1.5, 1, -100),
 (2, 2, 1.0, 3, 0),
@@ -93,5 +86,5 @@ INSERT INTO HistoriqueAchatRegime (idUtilisateur, idRegime, montant, dateAchat) 
 INSERT INTO TypeAbonnement (designation, prix, reduction) VALUES
 ('Gold', 50000, 15);
 
-INSERT INTO Abonnement (idUtilisateur, idTypeAbonnement, dateFin) VALUES
-(1, 1, '2024-06-30');
+INSERT INTO Abonnement (idUtilisateur, idTypeAbonnement, dateDebut, dateFin) VALUES
+(1, 1, '2023-06-01', '2024-06-30');
