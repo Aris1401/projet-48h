@@ -56,8 +56,6 @@
      {
          return $this->idUtilisateur;
      }
-<<<<<<< Updated upstream
-=======
 
      public function ajouter($sortie,$entree,$idUtilisateur)
     {
@@ -71,6 +69,7 @@
         $this->db->insert('Transaction', $data);
     }
 //////////////////////////////////////////////////////////////////////////
+
     public function getTransactionByIdUtilisateur($idUtilisateur){
     
         $table_name = 'Transaction';
@@ -115,8 +114,6 @@ public function  InsertSortie($idUtilisateur,$dateTransaction,$entre)
 }
 /////////////////////////////////////////////////////////////////////////////////
 
-
->>>>>>> Stashed changes
  }
  
 ?>
