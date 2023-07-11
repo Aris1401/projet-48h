@@ -1,49 +1,79 @@
-<?
+<?php
 class Abonnement_Model extends CI_Model
 {
     private $idAbonnement;
-    private $designation;
-    private $prix;
-    private $reduction;
-    
+    private $idUtilisateur;
+    private $idTypeAbonnement;
+    private $dateDebut;
+    private $dateFin;
+
     public function getIdAbonnement()
     {
         return $this->idAbonnement;
     }
-    
+
     public function setIdAbonnement($idAbonnement)
     {
         $this->idAbonnement = $idAbonnement;
     }
-    
-    public function getDesignation()
+
+    public function getIdUtilisateur()
     {
-        return $this->designation;
+        return $this->idUtilisateur;
     }
-    
-    public function setDesignation($designation)
+
+    public function setIdUtilisateur($idUtilisateur)
     {
-        $this->designation = $designation;
+        $this->idUtilisateur = $idUtilisateur;
     }
-    
-    public function getPrix()
+
+    public function getIdTypeAbonnement()
     {
-        return $this->prix;
+        return $this->idTypeAbonnement;
     }
-    
-    public function setPrix($prix)
+
+    public function setIdTypeAbonnement($idTypeAbonnement)
     {
-        $this->prix = $prix;
+        $this->idTypeAbonnement = $idTypeAbonnement;
     }
-    
-    public function getReduction()
+
+    public function getDateDebut()
     {
-        return $this->reduction;
+        return $this->dateDebut;
     }
-    
-    public function setReduction($reduction)
+
+    public function setDateDebut($dateDebut)
     {
-        $this->reduction = $reduction;
+        $this->dateDebut = $dateDebut;
+    }
+
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    }
+
+    public function getAllAbonnement()
+    {
+        $query = $this->db->get('Abonnement');
+        $resultats = $query->result();
+
+        $abonnements = array();
+        foreach ($resultats as $resultat) {
+            $abonnement = new Abonnement_Model();
+            $abonnement->setIdAbonnement($resultat->idAbonnement);
+            $abonnement->setIdUtilisateur($resultat->idUtilisateur);
+            $abonnement->setIdTypeAbonnement($resultat->idTypeAbonnement);
+            $abonnement->setDateDebut($resultat->dateDebut);
+            $abonnement->setDateFin($resultat->dateFin);
+            array_push($abonnements,$abonnement);
+        }
+
+        return $abonnements;
     }
 }
 ?>

@@ -50,4 +50,12 @@ class Admin extends CI_Controller{
         $this->load->view("backoffice/home/ValidationCodes", $content);
         $this->load->view("backoffice/Footer");
     }
+
+    public function statistique(){
+        $data = array('title' => "Statistiques");
+
+        $this->load->view("backoffice/Header", $data);
+        $this->load->view("backoffice/home/Statistique");
+        $this->load->view("backoffice/Footer");
+    }
 }
