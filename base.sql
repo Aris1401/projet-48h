@@ -150,6 +150,7 @@ create table Abonnement(
     idAbonnement INTEGER PRIMARY KEY AUTO_INCREMENT,
     idUtilisateur integer not null,
     idTypeAbonnement integer not null,
+    dateDebut date not null,
     dateFin date not null,
     Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur),
     Foreign Key (idTypeAbonnement) REFERENCES TypeAbonnement(idTypeAbonnement)
