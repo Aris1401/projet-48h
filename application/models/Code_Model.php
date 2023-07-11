@@ -50,7 +50,7 @@ require_once('ValidationCode_Model.php');
         {
             $table_name = 'Code';
 
-            $query = "SELECT * FROM ".$table_name."WHERE idCode =  %i";
+            $query = "SELECT * FROM ".$table_name." WHERE idCode =  %i";
             $query = sprintf($query, $this->db->escape($idCode));
 
             $resultat = $this->db->query($query);
@@ -73,7 +73,7 @@ require_once('ValidationCode_Model.php');
         public function getByCode($code){
             $table_name = 'Code';
         
-            $query = "SELECT * FROM ".$table_name."WHERE code =  %i";
+            $query = "SELECT * FROM ".$table_name." WHERE code =  %i";
             $query = sprintf($query, $this->db->escape($code));
         
             $resultat = $this->db->query($query);

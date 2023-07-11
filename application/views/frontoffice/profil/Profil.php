@@ -18,7 +18,7 @@
                 </div>
             </div>
             
-            <form class="user-code">
+            <form class="user-code" action="<?php echo base_url("RequestCode/sendRequestCode"); ?>" method="get">
                 <div class="field">
                     <input type="text" name="code">
                 </div>
