@@ -117,7 +117,7 @@
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                            <a href="<?php echo base_url("Admin/updateActiviteSport?id=" .$item->idActiviteSport); ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                            <a href="<?php echo base_url("Admin/mandaloCActiviteSport?id=" .$item->idActiviteSport); ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
                                                 Modifier
                                                 </a>
                                             </td>

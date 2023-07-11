@@ -49,7 +49,7 @@ class Admin extends CI_Controller{
             redirect(base_url("LoginRegister/Login"));
         }
     }
-    
+//////////////////////////////////////////////////////////////////    
     public function activite() {
         $this->load->model("Utilisateur_Model", "Utilisateur");
         session_start();
@@ -113,6 +113,25 @@ public function activiteSport() {
     }
     else{
         redirect(base_url("LoginRegister/Login"));
+    }
+}
+ //////////////////////////////////////////////////////////////////   
+    public function validation() {
+        session_start();
+        
+        if (!isset($_SESSION['current_user'])) {
+            redirect(base_url("LoginRegister/Login"));
+            return;
+        }
+        
+        $this->load->model("ValidationCode_Model", "ValidationCode");
+        
+        $data = array('title' => "Activite Sportive");
+        
+        $content = array('invalides' => $this->ValidationCode->getAllInvalideCodes());
+        $this->load->view("backoffice/Header", $data);
+        $this->load->view("backoffice/home/ValidationCodes", $content);
+        $this->load->view("backoffice/Footer");
     }
 }
 //////////////////////////////////////////////////////////////////
@@ -351,6 +370,45 @@ public function logout(){
     session_destroy();
     redirect(base_url("LoginRegister/Login"));
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+public function mandaloCRegime()
+{
+    $this->load->helper('UI');
+    $this->load->helper('url');
+    $this->load->model("Regime_Model", "regime");  
+    $data = array('title' => "Regime");  
+    $id = $this->input->get('id');
+    if (check_inputs(array($id))) 
+    {
+        $this->load->model('Regime_Model', 'activiteSport');
+        $user = new Regime_Model();
+        $user->setIdRegime($id);
+        $content = array('regimes' => $this->regime->getRegimeById($id));
+    
+    $this->load->view("backoffice/Header", $data);
+    $this->load->view("backoffice/UpdateRegime", $content);
+    $this->load->view("backoffice/Footer");
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+public function mandaloCActiviteSport()
+{
+    $this->load->helper('UI');
+    $this->load->helper('url');
+    $this->load->model("ActiviteSport_Model", "regime");  
+    $data = array('title' => "ActiviteSport");  
+    $id = $this->input->get('id');
+    if (check_inputs(array($id))) 
+    {
+        $this->load->model('ActiviteSport_Model', 'activiteSport');
+        $user = new ActiviteSport_Model();
+        $user->setIdActiviteSport($id);
+        $content = array('regimes' => $this->regime->getActiviteSportById($id));
+    
+    $this->load->view("backoffice/Header", $data);
+    $this->load->view("backoffice/UpdateActiviteSport", $content);
+    $this->load->view("backoffice/Footer");
+    }
+}
 }
 
