@@ -157,7 +157,7 @@ public function doRegister($user) {
         $resultat = $this->db->query($query);
         $ligne_resultat = $resultat->row_array();
 
-//        if ($ligne_resultat == null) return null;
+        // if ($ligne_resultat == null) return null;
 
         $utilisateur = new Utilisateur_Model();
         $utilisateur->setIdUtilisateur($id);

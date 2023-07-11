@@ -55,13 +55,12 @@ class LoginRegister extends CI_Controller{
         }
 //////////////////////////////////////////////////////
          
-        function validerLogin() {
-            session_start();
-
+        function validerLogin() {            
             $email = $this->input->post('email');
             $motDePasse = $this->input->post('motDePasse');
-
+            
             $this->load->model('Utilisateur_Model', 'user');
+            session_start();
 
             $ligne_resultat = $this->user->doLogin($email, $motDePasse);
             
@@ -75,6 +74,8 @@ class LoginRegister extends CI_Controller{
                 }
                 echo "True|";
             }
+
+            echo var_dump($_SESSION['current_user']);
         }           
 ///////////////////////////////////////////////////
    
