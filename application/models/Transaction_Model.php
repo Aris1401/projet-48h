@@ -56,7 +56,7 @@
      {
          return $this->idUtilisateur;
      }
-
+////////////////////////////////////////////////////////////////////
      public function ajouter($sortie,$entree,$idUtilisateur)
     {
         $data = array(
