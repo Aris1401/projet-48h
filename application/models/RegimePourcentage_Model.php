@@ -1,28 +1,50 @@
-<<<<<<< Updated upstream
-idProgrammeRegime INTEGER PRIMARY KEY AUTO_INCREMENT,
-    jour INTEGER not null,
-    idRegime integer not null,
-    idPlat integer not null,
-    idActiviteSport integer,
-    <?php
-class Plat_Model extends CI_Model
-{
-    private $idProgrammeRegime;
-    private $jour;
-    private $idRegime;
-    private $idPlat;
-    private $idActiviteSport;
-    
-
-=======
 <?php
-class Plat_Model extends CI_Model
+class RegimePourcentage_Model extends CI_Model
 {
     private $idRegimePourcentage;
     private $idRegime;
     private $idTypePourcentage;
     private $pourcentage;
->>>>>>> Stashed changes
-}
 
+    public function getIdRegimePourcentage()
+    {
+        return $this->idRegimePourcentage;
+    }
+
+    public function setIdRegimePourcentage($idRegimePourcentage)
+    {
+        $this->idRegimePourcentage = $idRegimePourcentage;
+    }
+
+    public function getIdRegime()
+    {
+        return $this->idRegime;
+    }
+
+    public function setIdRegime($idRegime)
+    {
+        $this->idRegime = $idRegime;
+    }
+
+    public function getIdTypePourcentage()
+    {
+        return $this->idTypePourcentage;
+    }
+
+    public function setIdTypePourcentage($idTypePourcentage)
+    {
+        $this->idTypePourcentage = $idTypePourcentage;
+    }
+
+    public function getPourcentage()
+    {
+        return $this->pourcentage;
+    }
+
+    public function setPourcentage($pourcentage)
+    {
+        $this->pourcentage = $pourcentage;
+    }
+}
 ?>
+

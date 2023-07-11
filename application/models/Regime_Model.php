@@ -7,6 +7,7 @@ class Regime_Model extends CI_Model
     private $image;
     private $duree;
     private $variationPoids;
+    private $prixRegime;
     
     
     public function setIdRegime($idRegime)
@@ -67,6 +68,14 @@ class Regime_Model extends CI_Model
     public function getVariationPoids()
     {
         return $this->variationPoids;
+    }
+
+    public function setPrixRegime($prixRegime){
+        $this->prixRegime = $prixRegime;
+    }
+
+    public function getPrixRegime(){
+        return $this->prixRegime;
     }
     
     public function AllRegime() {

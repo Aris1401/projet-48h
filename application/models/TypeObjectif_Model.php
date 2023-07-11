@@ -11,6 +11,14 @@ class TypeObjectif_Model extends CI_Model
     public function setIdTypeObjectif  ($idTypeObjectif) {
         $this->idTypeObjectif   = $idTypeObjectif ;
     }
+
+    public function getDesignationObjectif(){
+        return $this->designationObjectif;
+    }
+
+    public function setDesignationObjectif($designationObjectif){
+        $this->designationObjectif = $designationObjectif;
+    }
 /////////////////////////////////AllObjectif////////////////////////////////////////
 public function getAllTypeObjectif() {
     $query = "SELECT * FROM TypeObjectif";
