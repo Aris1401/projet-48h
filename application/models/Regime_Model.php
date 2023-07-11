@@ -7,7 +7,8 @@ class Regime_Model extends CI_Model
     private $image;
     private $duree;
     private $variationPoids;
-    
+    private $prixRegime;
+
     
     public function setIdRegime($idRegime)
     {
@@ -68,7 +69,17 @@ class Regime_Model extends CI_Model
     {
         return $this->variationPoids;
     }
+
+    public function setPrixRegime($prixRegime)
+    {
+        $this->prixRegime = $prixRegime;
+    }
     
+    public function getPrixRegime()
+    {
+        return $this->prixRegime;
+    }
+ //////////////////////////////////////   
     public function AllRegime() {
         $query = $this->db->get('Regime');
         
@@ -80,7 +91,7 @@ class Regime_Model extends CI_Model
         
         return $regime;
     }
-    
+///////////////////////////////////////    
     public function getRegimeFromPoids($variance) {
         $this->load->model('Utilisateur_Model', 'Utilisateur');
         
@@ -133,7 +144,7 @@ class Regime_Model extends CI_Model
         
         return $regimes;
     }
-    
+ //////////////////////////////////////   
     function calculerRapport($regime, $user) {
         $rapport = $regime->rapport;
         
@@ -142,19 +153,19 @@ class Regime_Model extends CI_Model
         return $rapport_calculer;
     }
 
-//////////Insert Regime
-public function doRegister($designationRegime, $description, $image, $duree, $variationPoids)
+//////////////////////////////Insert Regime
+public function doRegister($designationRegime, $description, $image, $duree, $variationPoids,$prixRegime)
 {
-    $query = "INSERT INTO Utilisateur (designationRegime, description, image, duree, variationPoids) VALUES (%s, %s, %s, %s, %s)";
+    $query = "INSERT INTO Regime (designationRegime, description, image, duree, variationPoids ,prixRegime) VALUES (%s, %s, %s, %s, %s, %s)";
     $query = sprintf($query, $this->db->escape($designationRegime),
      $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree)
-     ,$this->db->escape($variationPoids));
+     ,$this->db->escape($variationPoids),$this->db->escape($prixRegime));
          
     $this->db->query($query);
 
     return $this->db->insert_id();
 }
-//////////Delete Regime
+///////////////////////////////Delete Regime
 public function doDelete($idRegime)
 {
     $query = "DELETE FROM Regime WHERE idRegime = %s";
@@ -164,7 +175,7 @@ public function doDelete($idRegime)
 
     return $this->db->insert_id();
 }
-/////////Update Regime
+////////////////////////////////Update Regime
 public function doUpdate($idRegime, $designationRegime, $description, $image, $duree,$variationPoids)
 {
     $query = "UPDATE Regime SET designationRegime = %s, description = %s, image = %s, duree = %s , variationPoids = %s WHERE idRegime = %s";
@@ -176,7 +187,7 @@ public function doUpdate($idRegime, $designationRegime, $description, $image, $d
 
     return $this->db->affected_rows();
 }
-/////////////Select all
+//////////////////////////////////Select all
 public function getAllActivite() {
     $query = "SELECT * FROM Regime";
 
