@@ -60,9 +60,19 @@ class SuggestionRegime extends CI_Controller{
         $nonnaie_utilisateur = $this->Utilisateur->getMonnaieCouranteWithTransaction($_SESSION['current_user']->getIdUtilisateur());
         if ($nonnaie_utilisateur < $regime_instance->prix) redirect(base_url("Profil"));
         
+        // Remise sur abonnement
+        $prix = $regime_instance->prix;
+        
+        $remise = 0;
+        if (isset($_SESSION['abonnement'])) {
+            $remise = (double) $_SESSION['abonnement']->type->reduction;
+        }
+        
+        $prix = $prix - ($prix * ($remise / 100));
+        
         // Transation
-        $this->Transaction->ajouter($regime_instance->prix, 0, $_SESSION['current_user']->getIdUtilisateur());
-        $this->Historique->ajouterHistorique($regime, $regime_instance->prix);
+        $this->Transaction->ajouter($prix, 0, $_SESSION['current_user']->getIdUtilisateur());
+        $this->Historique->ajouterHistorique($regime, $prix);
         
         redirect(base_url("Accueil"));
     }

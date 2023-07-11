@@ -3,6 +3,7 @@
     <link rel="stylsheet" href="<?php echo base_url("assets/bulma/dist/css/bulma-carousel.min.css") ?>">
     
     <section class="main-suggestion" style="background: url('<?php echo base_url('assets/img/top-view-fresh-vegetables-with-greens-white.jpg') ?>'); background-size: 100% 100%;">
+        <?php if (count($suggestions) > 0) { ?>
         <div class="left-content">
             <div>
                 <h1><?php echo $suggestions[0]->designationRegime ?></h1>
@@ -45,6 +46,9 @@
                 <a href="<?php echo base_url("SuggestionRegime/Payer?regime=" . $suggestions[0]->idRegime . "&pour=" . $suggestions[0]->pour) ?>">Acheter</a>
             </div>
         </div>
+        <?php } else { ?>
+        <h1>Aucun regime qui peut vous correspondre.</h1>
+        <?php } ?>
     </section>
     <script src="<?php echo base_url("assets/bulma/dist/js/bulma-carousel.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/suggestion.js") ?>" defer></script>
