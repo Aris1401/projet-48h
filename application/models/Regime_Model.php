@@ -8,6 +8,7 @@ class Regime_Model extends CI_Model
     private $duree;
     private $variationPoids;
     
+    
     public function setIdRegime($idRegime)
     {
         $this->idRegime = $idRegime;
