@@ -140,6 +140,56 @@ class Regime_Model extends CI_Model
         
         return $rapport_calculer;
     }
+
+//////////Insert Regime
+public function doRegister($designationRegime, $description, $image, $duree, $variationPoids)
+{
+    $query = "INSERT INTO Utilisateur (designationRegime, description, image, duree, variationPoids) VALUES (%s, %s, %s, %s, %s)";
+    $query = sprintf($query, $this->db->escape($designationRegime),
+     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree))
+     $this->db->escape($variationPoids), ;
+         
+    $this->db->query($query);
+
+    return $this->db->insert_id();
+}
+//////////Delete Regime
+public function doRegister($idRegime)
+{
+    $query = "DELETE FROM Regime WHERE idRegime = %s";
+    $query = sprintf($query, $this->db->escape($idRegime));
+         
+    $this->db->query($query);
+
+    return $this->db->insert_id();
+}
+/////////Update Regime
+public function doUpdate($idRegime, $designationRegime, $description, $image, $duree,$variationPoids)
+{
+    $query = "UPDATE Regime SET designationRegime = %s, description = %s, image = %s, duree = %s , variationPoids = %s WHERE idRegime = %s";
+    $query = sprintf($query, $this->db->escape($designationRegime), $this->db->escape($description),
+     $this->db->escape($image), $this->db->escape($duree), $this->db->escape($variationPoids)
+    ,$this->db->escape($idRegime));
+         
+    $this->db->query($query);
+
+    return $this->db->affected_rows();
+}
+/////////////Select all
+public function getAllActivite() {
+    $query = "SELECT * FROM Regime";
+
+    $resultat = $this->db->query($query);
+
+    $currentObjects = array();
+
+    foreach($resultat->result_array() as $data) {
+        array_push($currentObjects, $data);
+    }
+
+    return $currentObjects;
 }
 
+
+}
 ?>

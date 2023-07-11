@@ -10,19 +10,19 @@
 <body>
     <div class="container">
             <h1>Profil</h1>
-            <form action="<?php echo base_url('Login/simplelogin')?>" method="post">
+            <form method="POST" action="<?php echo base_url("LoginRegister/validerProfilUtilisateur"); ?>">
                 <div class="field is-grouped">
                     <div class="field">
                         <label for="">Poids</p>
                         <div class="control">
-                            <input type="number" step="0.01" name="poids" placeholder="Poids"/>
+                            <input type="number" step="0.01" name="Poids" placeholder="Poids"/>
                         </div>
                     </div>
 
                     <div class="field">
                         <label for="">Taille</p>
                         <div class="control">
-                            <input type="number" step="0.01" name="taille" placeholder="Taille"/>
+                            <input type="number" step="0.01" name="Taille" placeholder="Taille"/>
                         </div>
                     </div>
                 </div>
@@ -30,17 +30,17 @@
                 <div class="field">
                     <label for="">Date Naissance</p>
                     <div class="control">
-                        <input type="date" name="datenaissance" placeholder="Date Naissance"/>
+                        <input type="date" name="DateDeNaissance" placeholder="Date Naissance"/>
                     </div>
                 </div>
                 
                 <div class="field genres">
-                    <input type="radio" id="1" value="1" name="objectif">
+                    <input type="radio" id="1" value="1" name="Genre">
                     <label class="radio" for="1">
                         Homme
                     </label>
 
-                    <input type="radio" id="0" value="0" name="objectif">
+                    <input type="radio" id="0" value="0" name="Genre">
                     <label class="radio" for="0">
                         Femme
                     </label>
