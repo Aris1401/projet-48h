@@ -111,22 +111,22 @@
                                             </td>
                                         
                                             <td class="align-middle">
-                                                <a href="getValeurModifier/?id=<?php echo $item->idRegime; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                            <a href="<?php echo base_url("Admin?id=" .$item->idRegime); ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
                                                 Afficher programme
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="getValeurModifier/?id=<?php echo $item->idRegime; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                            <a href="<?php echo base_url("Admin/insertRegime?id=" .$item->idRegime); ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
                                                 Ajouter un programme
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="getValeurModifier/?id=<?php echo $item->idRegime; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                            <a href="<?php echo base_url("Admin/mandaloCRegime?id=" .$item->idRegime); ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
                                                 Modifier
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="delete/?idd=<?php echo $item->idRegime; ?>" class="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
+                                            <a href="<?php echo base_url("Admin/deleteRegime?id=" .$item->idRegime); ?>" class="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
                                                 Supprimer
                                                 </a>
                                             </td>

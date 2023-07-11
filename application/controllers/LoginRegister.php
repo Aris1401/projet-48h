@@ -13,11 +13,21 @@
 class LoginRegister extends CI_Controller{
     public function login() {
         session_start();
-        
+        $user = $_SESSION['current_user'];
+            
         if (isset($_SESSION['current_user'])) {
-            redirect(base_url("Accueil"));
-            return;
+            $user = $_SESSION['current_user'];
+            if($user->getEstAdmin() == 0){
+                redirect(base_url("Accueil"));
+            }
+            else if($user->getEstAdmin() == 0){
+                redirect(base_url("Admin"));
+            }
         }
+        else{
+            redirect(base_url("LoginRegister/Login"));
+        }
+    }
         
         $this->load->view("frontoffice/login/Login");
     }
@@ -27,9 +37,13 @@ class LoginRegister extends CI_Controller{
         session_start();
         
         if (isset($_SESSION['current_user'])) {
-            redirect(base_url("Accueil"));
-            return;
-        }
+            $user = $_SESSION['current_user'];
+            if($user->getEstAdmin() == 0){
+                redirect(base_url("Accueil"));
+            }
+            else if($user->getEstAdmin() == 0){
+                redirect(base_url("Admin"));
+            }
         
         $this->load->view("frontoffice/login/Inscription");
     }
@@ -130,6 +144,16 @@ class LoginRegister extends CI_Controller{
    
 public function profilUtilisateur() {
     session_start();
+    
+    if (isset($_SESSION['current_user'])) {
+        $user = $_SESSION['current_user'];
+        if($user->getEstAdmin() == 0){
+            redirect(base_url("Accueil"));
+        }
+        else if($user->getEstAdmin() == 1){
+            redirect(base_url("Admin"));
+        }
+    }
     
     $this->load->view("frontoffice/login/ProfilUtilisateur");
 }
