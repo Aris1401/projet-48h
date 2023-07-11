@@ -81,7 +81,7 @@ create table Regime(
 
 create table TypePourcentage(
     idTypePourcentage INTEGER PRIMARY KEY AUTO_INCREMENT,
-    designation decimal not null
+    designation varchar(255) not null
 );
 
 create table RegimePourcentage(
