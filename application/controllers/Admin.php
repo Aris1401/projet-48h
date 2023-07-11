@@ -32,7 +32,6 @@ class Admin extends CI_Controller{
             redirect(base_url("LoginRegister/Login"));
             return;
         }
-        
         $this->load->model("Regime_Model", "Regime");
         
         $data = array('title' => "Regime");
@@ -41,7 +40,7 @@ class Admin extends CI_Controller{
         $this->load->view("backoffice/home/Regime", $content);
         $this->load->view("backoffice/Footer");
     }
-    
+//////////////////////////////////////////////////////////////////    
     public function activite() {
         session_start();
         
@@ -59,7 +58,7 @@ class Admin extends CI_Controller{
         $this->load->view("backoffice/home/ActiviteSportive", $content);
         $this->load->view("backoffice/Footer");
     }
-    
+ //////////////////////////////////////////////////////////////////   
     public function validation() {
         session_start();
         
@@ -150,7 +149,6 @@ public function updateRegime()
 {
     $this->load->helper('UI');
     $this->load->helper('url');
-    $this->load->model('Utilisateur_Model', 'user');
     $idRegime = $this->input->post('idRegime');
     $designation = $this->input->post('designation');
     $description = $this->input->post('description');
@@ -158,7 +156,7 @@ public function updateRegime()
     $duree = $this->input->post('duree');
     $variationPoids = $this->input->post('variationPoids');
     $prixRegime = $this->input->post('prixRegime');
-/////image a modifier 
+/////image a modifier //////////////////////////////////////////////////////////////////   
     if (check_inputs(array($idRegime,$designation,$description,$duree,$variationPoids,$prixRegime))) 
     {
         $this->load->model('Regime_Model', 'regime');
@@ -171,10 +169,15 @@ public function updateRegime()
             $user->setVariationPoids($variationPoids);
             $user->setPrixRegime($prixRegime);
         session_start();
-        $_SESSION['current_user'] = $this->user->getUtilisateurById($this->regime->doUpdate($idRegime,$designation,$description,$image,$duree,$variationPoids,$prixRegime));
-        redirect('Admin/Regime');
+        $this->regime->doUpdate($idRegime,$designation,$description,$image,$duree,$variationPoids,$prixRegime);
+        redirect('Admin/Regime');   
+    }
+        else
+        {
+            echo("erreur");
+        }
     }   
-}
+
 /////////////////////////////////ACTIVITE SPORT////////////////////////////////////
 public function insertActiviteSport()  
 {
@@ -228,7 +231,6 @@ public function updateActiviteSport()
 {
     $this->load->helper('UI');
     $this->load->helper('url');
-    $this->load->model('Utilisateur_Model', 'user');
     $idActiviteSport = $this->input->post('idActiviteSport');
     $idActivite = $this->input->post('idActivite');
     $idSport = $this->input->post('idSport');
@@ -246,10 +248,54 @@ public function updateActiviteSport()
         $user->setNombre($nombre);
         $user->setVariationPoids($variationPoids);
         session_start();
-        $_SESSION['current_user'] = $this->user->getUtilisateurById($this->activiteSport->doUpdate($idActiviteSport,$idActivite,$idSport,$duree,$nombre,$variationPoids));
-        redirect('Admin/Regime');
+      $this->activiteSport->doUpdate($idActiviteSport,$idActivite,$idSport,$duree,$nombre,$variationPoids);
+      
+        redirect('Admin/ActiviteSport');
+    }  
+    else
+    {
+        echo("erreur");
     }   
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+public function mandaloCRegime()
+{
+    $this->load->helper('UI');
+    $this->load->helper('url');
+    $this->load->model("Regime_Model", "regime");  
+    $data = array('title' => "Regime");  
+    $id = $this->input->get('id');
+    if (check_inputs(array($id))) 
+    {
+        $this->load->model('Regime_Model', 'activiteSport');
+        $user = new Regime_Model();
+        $user->setIdRegime($id);
+        $content = array('regimes' => $this->regime->getRegimeById($id));
+    
+    $this->load->view("backoffice/Header", $data);
+    $this->load->view("backoffice/UpdateRegime", $content);
+    $this->load->view("backoffice/Footer");
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+public function mandaloCActiviteSport()
+{
+    $this->load->helper('UI');
+    $this->load->helper('url');
+    $this->load->model("ActiviteSport_Model", "regime");  
+    $data = array('title' => "ActiviteSport");  
+    $id = $this->input->get('id');
+    if (check_inputs(array($id))) 
+    {
+        $this->load->model('ActiviteSport_Model', 'activiteSport');
+        $user = new ActiviteSport_Model();
+        $user->setIdActiviteSport($id);
+        $content = array('regimes' => $this->regime->getActiviteSportById($id));
+    
+    $this->load->view("backoffice/Header", $data);
+    $this->load->view("backoffice/UpdateActiviteSport", $content);
+    $this->load->view("backoffice/Footer");
+    }
+}
 }
 

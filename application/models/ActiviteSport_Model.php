@@ -115,7 +115,28 @@ public function AllActivite() {
     }
 
     return $currentObjects;
-}     
+}  
+///////////////////////////////////////////
+public function getActiviteSportById($id) {
+    $users_Table = "ActiviteSport";
+
+    $query = "SELECT * FROM ".$users_Table." WHERE idActiviteSport = %s";
+    $query = sprintf($query, $this->db->escape($id));
+
+    $resultat = $this->db->query($query);
+    $ligne_resultat = $resultat->row_array();
+
+    if ($ligne_resultat == null) return null;
+
+    $utilisateur = new ActiviteSport_Model();
+    $utilisateur->setIdActiviteSport($ligne_resultat['idActiviteSport']);
+    $utilisateur->setIdActivite($ligne_resultat['idActivite']);
+    $utilisateur->setIdSport($ligne_resultat['idSport']);
+    $utilisateur->setDuree($ligne_resultat['duree']);
+    $utilisateur->setNombre($ligne_resultat['nombre']);
+    $utilisateur->setVariationPoids($ligne_resultat['variationPoids']);
+    return $utilisateur;   
  }
- 
+
+}
 ?>

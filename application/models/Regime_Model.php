@@ -201,7 +201,29 @@ public function getAllActivite() {
 
     return $currentObjects;
 }
+//////////////////////////////////////////////////////////////////
+public function getRegimeById($id) {
+    $users_Table = "Regime";
 
+    $query = "SELECT * FROM ".$users_Table." WHERE idRegime = %s";
+    $query = sprintf($query, $this->db->escape($id));
+
+    $resultat = $this->db->query($query);
+    $ligne_resultat = $resultat->row_array();
+
+    if ($ligne_resultat == null) return null;
+
+    $utilisateur = new Regime_Model();
+    $utilisateur->setIdRegime($ligne_resultat['idRegime']);
+    $utilisateur->setDesignationRegime($ligne_resultat['designationRegime']);
+    $utilisateur->setDescription($ligne_resultat['description']);
+    $utilisateur->setImage($ligne_resultat['image']);
+    $utilisateur->setDuree($ligne_resultat['duree']);
+    $utilisateur->setVariationPoids($ligne_resultat['variationPoids']);
+    $utilisateur->setPrixRegime($ligne_resultat['prixRegime']);
+    return $utilisateur;
+
+}
 
 }
 ?>
