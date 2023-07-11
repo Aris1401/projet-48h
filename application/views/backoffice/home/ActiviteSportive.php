@@ -47,7 +47,7 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Designation</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Duree</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
                                             <th class="text-secondary opacity-7"></th>
                                             <th class="text-secondary opacity-7"></th>
                                             <th class="text-secondary opacity-7"></th>
@@ -62,26 +62,26 @@
                                                 <p class="text-xs font-weight-bold mb-0"><?php echo $item->designationActivite ?></p>
                                             </td>
                                             <td>
-                                                <p class="text-xs text-secondary mb-0"><?php echo $item->duree ?></p>
+                                                <p class="text-xs text-secondary mb-0"><?php echo $item->description ?></p>
                                             </td>
                                         
                                             <td class="align-middle">
-                                                <a href="getValeurModifier/?id=<?php echo $item->idRegime; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="getValeurModifier/?id=<?php echo $item->idActivite; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
                                                 Afficher programme
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="getValeurModifier/?id=<?php echo $item->idRegime; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="getValeurModifier/?id=<?php echo $item->idActivite; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
                                                 Ajouter un programme
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="getValeurModifier/?id=<?php echo $item->idRegime; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="getValeurModifier/?id=<?php echo $item->idActivite; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
                                                 Modifier
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="delete/?idd=<?php echo $item->idRegime; ?>" class="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="delete/?idd=<?php echo $item->idActivite; ?>" class="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
                                                 Supprimer
                                                 </a>
                                             </td>
