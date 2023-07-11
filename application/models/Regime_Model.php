@@ -78,15 +78,7 @@ class Regime_Model extends CI_Model
     public function getPrixRegime(){
         return $this->prixRegime;
     }
-    public function setPrixRegime($prixRegime)
-    {
-        $this->prixRegime = $prixRegime;
-    }
-    
-    public function getPrixRegime()
-    {
-        return $this->prixRegime;
-    }
+
  //////////////////////////////////////   
     public function AllRegime() {
         $query = $this->db->get('Regime');

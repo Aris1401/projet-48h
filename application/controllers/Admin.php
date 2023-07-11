@@ -37,16 +37,17 @@ class Admin extends CI_Controller{
         $this->load->view("backoffice/Footer");
     }
 /////////////////////////////////////////////////////////////////////
-public function activite() {
-    $this->load->model("Activite_Model", "Activite");
+public function activiteSport() {
+    $this->load->model("ActiviteSport_Model", "ActiviteSportive");
     
     $data = array('title' => "Activite Sportive");
     
-    $content = array('regimes' => $this->Activite->AllActivite());
+    $content = array('regimes' => $this->ActiviteSportive->AllActivite());
     $this->load->view("backoffice/Header", $data);
     $this->load->view("backoffice/home/ActiviteSportive", $content);
     $this->load->view("backoffice/Footer");
 }
+//////////////////////////////////////////////////////////////////
     public function statistique(){
         $data = array('title' => "Statistiques");
 
@@ -55,7 +56,7 @@ public function activite() {
         $this->load->view("backoffice/Footer");
     }
 
-/////////////////////////////////////////////////////////////////////
+/////////////////////////////REGIME////////////////////////////////////////
 public function insertRegime()  
 {
     $this->load->helper('UI');
@@ -83,24 +84,23 @@ public function insertRegime()
     } 
    
 }
-/////////////////////////////////////////////////////////////////////
+////////////////////////////////REGIME/////////////////////////////////////
 public function deleteRegime()  
 {
     $this->load->helper('UI');
     $this->load->helper('url');
-    $this->load->model('Utilisateur_Model', 'user');
-    $idRegime = $this->input->post('idRegime');
+    $idRegime = $this->input->get('id');
     if (check_inputs(array($idRegime))) 
     {
         $this->load->model('Regime_Model', 'regime');
         $user = new Regime_Model();
         $user->setIdRegime($idRegime);
         session_start();
-        $_SESSION['current_user'] = $this->user->getUtilisateurById($this->regime->doDelete($idRegime));
+        $_SESSION['current_user'] =$this->regime->doDelete($idRegime);
         redirect('Admin/Regime');
     }   
 }
-/////////////////////////////////////////////////////////////////////
+/////////////////////////////////REGIME////////////////////////////////////
 public function updateRegime()
 {
     $this->load->helper('UI');
@@ -130,8 +130,81 @@ public function updateRegime()
         redirect('Admin/Regime');
     }   
 }
-/////////////////////////////////////////////////////////////////////
-
+/////////////////////////////////ACTIVITE SPORT////////////////////////////////////
+public function insertActiviteSport()  
+{
+    $this->load->helper('UI');
+    $this->load->helper('url');
+    $this->load->model('Utilisateur_Model', 'user');
+    $idActivite = $this->input->post('idActivite');
+    $idSport = $this->input->post('idSport');
+    $duree = $this->input->post('duree');
+    $nombre = $this->input->post('nombre');
+    $variationPoids = $this->input->post('variationPoids');
+    if (check_inputs(array($idActivite,$idSport,$duree,$nombre,$variationPoids))) 
+    {
+        $this->load->model('ActiviteSport_Model', 'ActiviteSport');
+        $user = new ActiviteSport_Model();
+            $user->setIdActivite( $idActivite);
+            $user->setIdSport ($idSport);
+            $user->setDuree($duree);
+            $user->setNombre($nombre);
+            $user->setVariationPoids($variationPoids);
+        session_start();
+        $_SESSION['current_user'] = $this->user->getUtilisateurById($this->ActiviteSport->doRegister($idActivite,$idSport,$duree,$nombre,$variationPoids));  
+        redirect('Admin/activiteSport');
+    }   
+    else{
+        echo("erreur");
+    }
+}
+////////////////////////////////ACTIVITE SPORT/////////////////////////////////////
+public function deleteActiviteSport()  
+{
+    $this->load->helper('UI');
+    $this->load->helper('url');
+    $idActiviteSport = $this->input->get('id');
+    if (check_inputs(array($idActiviteSport))) 
+    {
+        $this->load->model('ActiviteSport_Model', 'activiteSport');
+        $user = new ActiviteSport_Model();
+        $user->setIdActiviteSport($idActiviteSport);
+        session_start();
+        $_SESSION['current_user'] =$this->activiteSport->doDelete($idActiviteSport);
+        redirect('Admin/activiteSport');
+    } 
+    else
+    {
+        echo("erreur");
+    }  
+}
+////////////////////////////////ACTIVITE SPORT/////////////////////////////////////
+public function updateActiviteSport()
+{
+    $this->load->helper('UI');
+    $this->load->helper('url');
+    $this->load->model('Utilisateur_Model', 'user');
+    $idActiviteSport = $this->input->post('idActiviteSport');
+    $idActivite = $this->input->post('idActivite');
+    $idSport = $this->input->post('idSport');
+    $duree = $this->input->post('duree');
+    $nombre = $this->input->post('nombre');
+    $variationPoids = $this->input->post('variationPoids');
+    if (check_inputs(array($idActiviteSport,$idActivite,$idSport,$duree,$nombre,$variationPoids))) 
+    {
+        $this->load->model('ActiviteSport_Model', 'activiteSport');
+        $user = new ActiviteSport_Model();
+        $user->setIdActiviteSport( $idActiviteSport);
+        $user->setIdActivite( $idActivite);
+        $user->setIdSport ($idSport);
+        $user->setDuree($duree);
+        $user->setNombre($nombre);
+        $user->setVariationPoids($variationPoids);
+        session_start();
+        $_SESSION['current_user'] = $this->user->getUtilisateurById($this->activiteSport->doUpdate($idActiviteSport,$idActivite,$idSport,$duree,$nombre,$variationPoids));
+        redirect('Admin/Regime');
+    }   
+}
 
 }
 
