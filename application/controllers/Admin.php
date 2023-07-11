@@ -78,16 +78,6 @@ class Admin extends CI_Controller{
         $this->load->view("backoffice/Footer");
     }
 /////////////////////////////////////////////////////////////////////
-public function activite() {
-    $this->load->model("Activite_Model", "Activite");
-    
-    $data = array('title' => "Activite Sportive");
-    
-    $content = array('regimes' => $this->Activite->AllActivite());
-    $this->load->view("backoffice/Header", $data);
-    $this->load->view("backoffice/home/ActiviteSportive", $content);
-    $this->load->view("backoffice/Footer");
-}
     public function statistique(){
         $this->load->model("AbonnementJoinType_Model","abonnement");
 
