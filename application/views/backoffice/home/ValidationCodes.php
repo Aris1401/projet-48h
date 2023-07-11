@@ -37,12 +37,12 @@
                                             </td>
                                         
                                             <td class="align-middle">
-                                                <a href="getValeurModifier/?id=<?php echo $item->idValidationCode; ?>" class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="<?php echo base_url("RequestCode/acceptRequest?idCode=".$item->idCode);?>"class="text-secondary font-weight-bold text-xs text-primary" data-toggle="tooltip" data-original-title="Edit user">
                                                 Accepter
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="delete/?idd=<?php echo $item->idValidationCode; ?>" class="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="<?php echo base_url("RequestCode/refuseRequest?idCode=".$item->idCode);?>"class="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
                                                 Decliner
                                                 </a>
                                             </td>
