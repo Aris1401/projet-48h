@@ -146,15 +146,15 @@ public function doRegister($designationRegime, $description, $image, $duree, $va
 {
     $query = "INSERT INTO Utilisateur (designationRegime, description, image, duree, variationPoids) VALUES (%s, %s, %s, %s, %s)";
     $query = sprintf($query, $this->db->escape($designationRegime),
-     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree))
-     $this->db->escape($variationPoids), ;
+     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree)
+     ,$this->db->escape($variationPoids));
          
     $this->db->query($query);
 
     return $this->db->insert_id();
 }
 //////////Delete Regime
-public function doRegister($idRegime)
+public function doDelete($idRegime)
 {
     $query = "DELETE FROM Regime WHERE idRegime = %s";
     $query = sprintf($query, $this->db->escape($idRegime));
