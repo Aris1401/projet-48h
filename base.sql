@@ -79,6 +79,20 @@ create table Regime(
     prixRegime decimal(18,5)
 );
 
+create table TypePourcentage(
+    idTypePourcentage INTEGER PRIMARY KEY AUTO_INCREMENT,
+    designation varchar(255) not null
+);
+
+create table RegimePourcentage(
+    idRegimePourcentage INTEGER PRIMARY KEY AUTO_INCREMENT,
+    idRegime integer not null,
+    idTypePourcentage integer not null,
+    pourcentage decimal not null,
+    Foreign Key (idRegime) REFERENCES Regime(idRegime),
+    Foreign Key (idTypePourcentage) REFERENCES TypePourcentage(idTypePourcentage)
+)
+
 create table ProgrammeRegime(
     idProgrammeRegime INTEGER PRIMARY KEY AUTO_INCREMENT,
     jour INTEGER not null,
@@ -123,4 +137,20 @@ create table HistoriqueAchatRegime(
     dateAchat date not null,
     Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur),
     Foreign Key (idRegime) REFERENCES Regime(idRegime)
+);
+
+create table TypeAbonnement(
+    idTypeAbonnement INTEGER PRIMARY KEY AUTO_INCREMENT,
+    designation varchar(255) not null,
+    prix decimal not null,
+    reduction decimal not null
+);
+
+create table Abonnement(
+    idAbonnement INTEGER PRIMARY KEY AUTO_INCREMENT,
+    idUtilisateur integer not null,
+    idTypeAbonnement integer not null,
+    dateFin date not null,
+    Foreign Key (idUtilisateur) REFERENCES Utilisateur(idUtilisateur),
+    Foreign Key (idTypeAbonnement) REFERENCES TypeAbonnement(idTypeAbonnement)
 );

@@ -53,7 +53,7 @@ class ValidationCode_Model extends CI_Model
     {
         $table_name = 'ValidationCode';
 
-        $query = "SELECT * FROM ".$table_name."WHERE idCode =  %i";
+        $query = "SELECT * FROM ".$table_name." WHERE idCode =  %s";
         $query = sprintf($query, $this->db->escape($idCode));
 
         $resultat = $this->db->query($query);
@@ -85,7 +85,7 @@ class ValidationCode_Model extends CI_Model
     public function getByidUtilisateurValider($idUtilisateur){
         $table_name = 'ValidationCode';
 
-        $query = "SELECT * FROM ".$table_name."WHERE idUtilisateur =  %i AND dateValidation IS NOT NULL";
+        $query = "SELECT * FROM ".$table_name." WHERE idUtilisateur =  %s AND dateValidation IS NOT NULL";
         $query = sprintf($query, $this->db->escape($idUtilisateur));
 
         $resultat = $this->db->query($query);

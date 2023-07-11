@@ -56,7 +56,7 @@
      {
          return $this->idUtilisateur;
      }
-
+////////////////////////////////////////////////////////////////////
      public function ajouter($sortie,$entree,$idUtilisateur)
     {
          date_default_timezone_set("Asia/Kuwait");
@@ -70,6 +70,7 @@
 
         $this->db->insert('Transaction', $data);
     }
+//////////////////////////////////////////////////////////////////////////
 
     public function getTransactionByIdUtilisateur($idUtilisateur){
     
@@ -91,6 +92,30 @@
         }
         return $results;
     }
+////////////////////////////////////////////////////////////////////////////////
+public function  InsertEntre($idUtilisateur,$dateTransaction,$entre)
+{
+    $query = "INSERT INTO Transaction (dateTransaction,sortie,entre,idUtilisateur) VALUES (%s, %s, %s, %s)";
+    $query = sprintf($query, $this->db->escape($designationRegime),
+     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree))
+     $this->db->escape($variationPoids), ;    
+    $this->db->query($query);
+
+    return $this->db->insert_id();
+} 
+/////////////////////////////////////////////////////////////////////////////////
+public function  InsertSortie($idUtilisateur,$dateTransaction,$entre)
+{
+    $query = "INSERT INTO Transaction (dateTransaction,sortie,entre,idUtilisateur) VALUES (%s, %s, %s, %s)";
+    $query = sprintf($query, $this->db->escape($designationRegime),
+     $this->db->escape($description), $this->db->escape($image), $this->db->escape($duree))
+     $this->db->escape($variationPoids), ;    
+    $this->db->query($query);
+
+    return $this->db->insert_id();
+}
+/////////////////////////////////////////////////////////////////////////////////
+
  }
  
 ?>

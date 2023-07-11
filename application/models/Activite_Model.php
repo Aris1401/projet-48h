@@ -58,7 +58,7 @@ public function doRegister($designationActivite, $description)
 }
 
 //////////Delete Activite
-public function doDelete($idRegime)
+public function doDelete($idActivite)
 {
     $query = "DELETE FROM Activite WHERE idActivite = %s";
     $query = sprintf($query, $this->db->escape($idActivite));
@@ -72,7 +72,7 @@ public function doDelete($idRegime)
 public function doUpdate($idActivite, $designationActivite, $description)
 {
     $query = "UPDATE Regime SET designationActivite = %s, description = %s  WHERE idActivite = %s";
-    $query = sprintf($query, $this->db->escape($designationRegime), $this->db->escape($description),
+    $query = sprintf($query, $this->db->escape($designationActivite), $this->db->escape($description),
     $this->db->escape($idActivite));
          
     $this->db->query($query);

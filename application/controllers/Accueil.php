@@ -23,4 +23,7 @@ class Accueil extends CI_Controller{
         $this->load->view("frontoffice/Navbar", $data);
         $this->load->view("frontoffice/home/Accueil");
     }
+
+
+
 }

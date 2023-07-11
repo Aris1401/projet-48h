@@ -30,7 +30,7 @@
         <div class="main-right-content">
             <h3>Profil Utilisateur</h3>
             
-            <form>
+            <form method="POST" action="<?php echo base_url("Profil/modifierProfil"); ?>">
                 <div class="field">
                     <label for="">Poids (kg)</label>
                     <div class="control">
