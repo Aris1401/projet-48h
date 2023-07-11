@@ -58,7 +58,7 @@ public function doRegister($designationActivite, $description)
 }
 
 //////////Delete Activite
-public function doRegister($idRegime)
+public function doDelete($idRegime)
 {
     $query = "DELETE FROM Activite WHERE idActivite = %s";
     $query = sprintf($query, $this->db->escape($idActivite));

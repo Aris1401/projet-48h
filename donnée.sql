@@ -5,7 +5,7 @@ INSERT INTO Genre (designationGenre) VALUES
 INSERT INTO Utilisateur (nom, prenom, email, motDePasse, image, idTypeObjectif, estAdmin) VALUES
 ('Doe', 'John', 'john.doe@example.com', 'password123', 'image1.jpg', 1, 0),
 ('Smith', 'Jane', 'jane.smith@example.com', 'password456', 'image2.jpg', 2, 1),
-('Johnson', 'David', 'david.johnson@example.com', 'password789', 'image3.jpg', 3, 0);
+('Johnson', 'David', 'david.johnson@example.com', 'password789', 'image3.jpg', 2, 0);
 
 INSERT INTO ProfilUtilisateur (idUtilisateur, poids, taille, dateDeNaissance, idGenre) VALUES
 (1, 70.5, 175, '1990-05-15', 1),
@@ -48,9 +48,9 @@ INSERT INTO Code (code, valeurCode, etat) VALUES
 ('IJKL', 15.0, 0);
 
 INSERT INTO ValidationCode (idCode, idUtilisateur, dateValidation) VALUES
-(1, 1, '2023-06-01'),
-(2, 2, '2023-06-05'),
-(3, 3, '2023-06-10');
+(1, 1, NULL),
+(2, 2, NULL),
+(3, 3, NULL);
 
 INSERT INTO Transaction (dateTransaction, sortie, entre, idUtilisateur) VALUES
 ('2023-06-01', 50.0, 0, 1),

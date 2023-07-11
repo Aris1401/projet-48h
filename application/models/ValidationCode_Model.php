@@ -105,7 +105,7 @@ class ValidationCode_Model extends CI_Model
     public function checkIfValider($idCode){
         $table_name = 'ValidationCode';
     
-        $query = "SELECT * FROM ".$table_name." WHERE idCode = %i AND dateValidation IS NOT NULL";
+        $query = "SELECT * FROM ".$table_name." WHERE idCode = %s AND dateValidation IS NOT NULL";
         $query = sprintf($query, $this->db->escape($idCode));
     
         $resultat = $this->db->query($query);
@@ -151,6 +151,31 @@ class ValidationCode_Model extends CI_Model
             return true;
         }            
         return false;
+    }
+    
+    public function getAllInvalideCodes() {
+        $this->load->model('Utilisateur_Model', 'Utilisateur');
+        $this->load->model('Code_Model', 'Code');
+        
+        $query = $this->db->where('dateValidation = ', null)->get('ValidationCode');
+        
+        $validations = array();
+        foreach ($query->result() as $row) {
+            // Obtenir l'utilisateur correspondant
+            $user = $this->Utilisateur->getUtilisateurById($row->idUtilisateur);
+            $row->user = $user;
+            
+            // Obtenir le code correspondant
+            $code = $this->Code->getById($row->idCode);
+            $row->code = $code;
+            
+            // Obtenir validiter du code
+            $row->estValide = $this->Code->checkIfValide($code->getCode());
+            
+            array_push($validations, $row);
+        }
+        
+        return $validations;
     }
 }
 ?>
