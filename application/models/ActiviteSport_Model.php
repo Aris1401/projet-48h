@@ -67,6 +67,55 @@
      {
          return $this->variationPoids;
      }
+
+//////////////////////////////Insert ActiviteSport
+public function doRegister($idActivite, $idSport, $duree, $nombre, $variationPoids)
+{
+    $query = "INSERT INTO ActiviteSport (idActivite, idSport, duree, nombre, variationPoids) VALUES (%s, %s, %s, %s, %s)";
+    $query = sprintf($query, $this->db->escape($idActivite),
+     $this->db->escape($idSport), $this->db->escape($duree), $this->db->escape($nombre)
+     ,$this->db->escape($variationPoids));
+         
+    $this->db->query($query);
+
+    return $this->db->insert_id();
+}
+///////////////////////////////Delete ActiviteSport
+public function doDelete($idActiviteSport)
+{
+    $query = "DELETE FROM ActiviteSport WHERE idActiviteSport = %s";
+    $query = sprintf($query, $this->db->escape($idActiviteSport));
+         
+    $this->db->query($query);
+
+    return $this->db->insert_id();
+}
+////////////////////////////////Update ActiviteSport
+public function doUpdate($idActiviteSport ,$idActivite, $idSport, $duree, $nombre, $variationPoids)
+{
+    $query = "UPDATE ActiviteSport SET idActivite = %s, idSport = %s, duree = %s, nombre = %s , variationPoids = %s WHERE idActiviteSport = %s";
+    $query = sprintf($query, $this->db->escape($idActivite), $this->db->escape($idSport),
+     $this->db->escape($duree), $this->db->escape($nombre), $this->db->escape($variationPoids)
+    ,$this->db->escape($idActiviteSport));
+         
+    $this->db->query($query);
+
+    return $this->db->affected_rows();
+}
+//////////////////////////////////Select all
+public function AllActivite() {
+    $query = "SELECT * FROM ActiviteSport";
+
+    $resultat = $this->db->query($query);
+
+    $currentObjects = array();
+
+    foreach($resultat->result() as $data) {
+        array_push($currentObjects, $data);
+    }
+
+    return $currentObjects;
+}     
  }
  
 ?>
